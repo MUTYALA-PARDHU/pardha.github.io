@@ -70,12 +70,7 @@ a {
     transition: color 0.3s ease;
 }
 
-a:hover {
-    color: darken(var(--primary-color), 10%); /* Placeholder for a darker shade */
-}
-
-/* Helper for darkening (replace with actual CSS if not using preprocessor) */
-/* For CSS, you might manually define a darker shade or use HSL for dynamic adjustment */
+/* Original rule for a:hover had a comment. Let's keep the explicit color */
 a:hover {
     color: #004085; /* A slightly darker blue */
 }
@@ -201,12 +196,21 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
 
 .social-links {
     margin-top: 20px;
+    /* --- NEW/MODIFIED STYLES FOR SOCIAL LINKS LAYOUT --- */
+    display: flex; /* Use flexbox for spacing */
+    justify-content: center; /* Center the icons */
+    gap: 25px; /* Add space between icons */
+    /* Removed margin from individual 'a' tags below as gap is better */
+    /* -------------------------------------------------- */
 }
 
 .social-links a {
     display: inline-block;
-    font-size: 1.8em;
-    margin: 0 15px;
+    /* --- MODIFIED: Increased font-size for larger icons --- */
+    font-size: 2.5em; /* This is the key change for icon size */
+    /* Removed margin as 'gap' on parent is now handling spacing */
+    /* margin: 0 15px; */
+    /* -------------------------------------------------- */
     color: var(--primary-color);
     transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -418,8 +422,11 @@ footer i {
     }
 
     .social-links a {
-        font-size: 1.5em;
-        margin: 0 10px;
+        /* --- MODIFIED for smaller screens --- */
+        font-size: 2em; /* Slightly smaller on very small screens, still readable */
+        /* Removed margin here too */
+        /* margin: 0 10px; */
+        /* ------------------------------------ */
     }
 
     .contact-form {
