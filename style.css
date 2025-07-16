@@ -303,48 +303,6 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     line-height: 1;
 }
 
-
-/* REMOVED: Research Interests Section Styles */
-/*
-#research-interests .interests-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.interest-item {
-    background-color: var(--white);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.interest-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.interest-item i {
-    font-size: 3.5em;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.interest-item h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: var(--heading-color);
-}
-
-.interest-item p {
-    font-size: 0.95em;
-    color: var(--dark-grey);
-}
-*/
-
 /* Publications & Experience Section */
 #publications, #experience {
     background-color: var(--white);
