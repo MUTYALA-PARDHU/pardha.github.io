@@ -12,13 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             // Adjust 150px to account for sticky header height and better scroll detection
-            if (pageYOffset >= sectionTop - 150) {
+            // Make sure the section is at least partially visible
+            if (pageYOffset >= sectionTop - 150 && pageYOffset < sectionTop + sectionHeight - 150) {
                 current = section.getAttribute('id');
             }
         });
 
         navLinks.forEach(link => {
             link.classList.remove('active');
+            // This condition needs to match the new section IDs
             if (link.href.includes(current)) {
                 link.classList.add('active');
             }
