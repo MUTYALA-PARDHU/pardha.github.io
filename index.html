@@ -1,110 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pardhu Chowdary | Research Scholar</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: #f8f9fa;
-      color: #333;
-    }
-    header {
-      background: #004080;
-      color: white;
-      text-align: center;
-      padding: 50px 20px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.8rem;
-    }
-    header p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-    section {
-      margin-bottom: 50px;
-    }
-    h2 {
-      border-left: 5px solid #004080;
-      padding-left: 10px;
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-    }
-    ul li {
-      background: #e6f2ff;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 6px;
-    }
-    .contact a {
-      color: #004080;
-      text-decoration: none;
-    }
-    .contact a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      background: #e9ecef;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #666;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Research Scholar Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Lora:wght=400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1>Pardhu Chowdary</h1>
-    <p>Research Scholar | Combustion | Computational Fluid Dynamics</p>
-  </header>
+    <header>
+        <nav class="container">
+            <h1 class="logo">Your Name</h1>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research-interests">Research Interests</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <div class="container">
-    <section class="about">
-      <h2>About Me</h2>
-      <p>
-        I'm a newly joined research scholar pursuing my PhD in Computational Combustion. I recently completed my B.Tech and am passionate about using simulations and numerical methods to explore fundamental combustion phenomena.
-      </p>
-    </section>
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <img src="https://via.placeholder.com/150" alt="Your Profile Picture" class="profile-pic">
+                <h2>Hello, I'm [Your Name]</h2>
+                <h3>A passionate [Your Field] Research Scholar</h3>
+                <p>Currently pursuing my [e.g., Master's/Ph.D.] at [Your University/Institution]. My research explores [briefly mention your broad research area or goals].</p>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user=..." target="_blank" aria-label="Google Scholar (if applicable)"><i class="fas fa-graduation-cap"></i></a>
+                    </div>
+            </div>
+        </section>
 
-    <section class="interests">
-      <h2>Research Interests</h2>
-      <ul>
-        <li>Combustion Modeling and Kinetics</li>
-        <li>CFD using OpenFOAM</li>
-        <li>Stiff ODE Solvers in Reactive Flows</li>
-        <li>Numerical Methods and High-Performance Computing</li>
-        <li>Machine Learning Applications in CFD</li>
-      </ul>
-    </section>
+        <section id="about" class="container section-padding">
+            <h2>About Me</h2>
+            <p>I am a highly motivated and enthusiastic research scholar with a keen interest in [Specific Area 1] and [Specific Area 2]. I recently joined [Your University Name] in [Month, Year] and am excited to contribute to the academic community and push the boundaries of knowledge in my field.</p>
+            <p>My academic journey so far has equipped me with a strong foundation in [mention key skills/disciplines, e.g., data analysis, theoretical modeling, experimental design, literature review]. I am actively seeking opportunities to collaborate on innovative projects and deepen my understanding of complex research questions.</p>
+            <p>In my free time, I enjoy [mention a hobby or two, e.g., reading, hiking, coding] which helps me maintain a balanced perspective and fosters creativity.</p>
+        </section>
 
-    <section class="education">
-      <h2>Education</h2>
-      <ul>
-        <li>PhD (Ongoing), [Your Institute Name], [Start Year] – Present</li>
-        <li>B.Tech in [Your Branch], [Your College Name], [Grad Year]</li>
-      </ul>
-    </section>
+        <section id="research-interests" class="container section-padding">
+            <h2>Research Interests</h2>
+            <div class="interests-grid">
+                <div class="interest-item">
+                    <i class="fas fa-brain"></i>
+                    <h3>[Interest Area 1]</h3>
+                    <p>Exploring the theoretical underpinnings and practical applications of [brief description].</p>
+                </div>
+                <div class="interest-item">
+                    <i class="fas fa-atom"></i>
+                    <h3>[Interest Area 2]</h3>
+                    <p>Investigating novel methodologies for [brief description of a research approach].</p>
+                </div>
+                <div class="interest-item">
+                    <i class="fas fa-robot"></i>
+                    <h3>[Interest Area 3]</h3>
+                    <p>Focusing on the intersection of [Field A] and [Field B] to address [specific problem].</p>
+                </div>
+                </div>
+        </section>
 
-    <section class="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-      <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
-    </section>
-  </div>
+        <section id="publications" class="container section-padding">
+            <h2>Publications & Preprints</h2>
+            <div class="placeholder-content">
+                <p>No publications yet. I am currently focusing on my coursework and initial research directions. This section will be updated as my research progresses.</p>
+                </div>
+        </section>
 
-  <footer>
-    <p>&copy; 2025 Pardhu Chowdary. All rights reserved.</p>
-  </footer>
+        <section id="experience" class="container section-padding">
+            <h2>Academic & Research Experience</h2>
+            <div class="experience-item">
+                <h3>Research Scholar / [Your Program Name]</h3>
+                <p><strong>[Your University/Institution Name]</strong> | [Start Date] – Present</p>
+                <ul>
+                    <li>Engaging in foundational coursework in [mention relevant courses].</li>
+                    <li>Conducting comprehensive literature reviews on [mention a broad topic].</li>
+                    <li>Actively participating in research group meetings and seminars.</li>
+                    <li>Assisting senior researchers with [mention any minor tasks or learning experiences].</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>[Previous Degree / Role, e.g., M.Sc. in Physics]</h3>
+                <p><strong>[Previous University Name]</strong> | [Start Date] – [End Date]</p>
+                <ul>
+                    <li>[Key achievement 1, e.g., Master's thesis on X]</li>
+                    <li>[Key achievement 2, e.g., Relevant coursework, projects]</li>
+                </ul>
+            </div>
+            </section>
+
+        <section id="contact" class="container section-padding">
+            <h2>Contact Me</h2>
+            <p>I'm always open to discussing new research ideas, collaborations, or academic opportunities. Feel free to reach out!</p>
+            <form action="https://formspree.io/f/yourformid" method="POST" class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="_replyto" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+            <p class="contact-info">
+                Email: <a href="mailto:your.email@example.com">your.email@example.com</a><br>
+                Location: [Your City, Country]
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <p>Built with <i class="fas fa-heart"></i> and code.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
