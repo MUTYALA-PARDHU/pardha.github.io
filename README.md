@@ -1,1 +1,0 @@
-# pardha.github.io
