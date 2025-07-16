@@ -1,14 +1,19 @@
 /* Universal Styles & Variables */
 :root {
     --primary-color: #0056b3; /* A professional blue */
+    --primary-dark: #004085; /* Darker shade for hover */
     --secondary-color: #e2eaf4; /* Light background for sections */
+    --accent-color: #ff6f61; /* A subtle, warm accent for highlights if needed */
     --text-color: #333;
     --heading-color: #222;
     --white: #ffffff;
     --light-grey: #f8f8f8;
     --dark-grey: #666;
+    --border-color: #ddd; /* General border color */
     --font-sans: 'Roboto', sans-serif;
     --font-serif: 'Lora', serif;
+    --shadow-light: 0 2px 8px rgba(0,0,0,0.08); /* Subtle shadow */
+    --shadow-medium: 0 4px 15px rgba(0,0,0,0.12); /* More pronounced shadow */
 }
 
 * {
@@ -23,34 +28,35 @@ html {
 
 body {
     font-family: var(--font-sans);
-    line-height: 1.6;
+    line-height: 1.7; /* Slightly increased for readability */
     color: var(--text-color);
     background-color: var(--white);
+    overflow-x: hidden; /* Prevent horizontal scroll on some mobile layouts */
 }
 
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 25px; /* Slightly more padding on sides */
 }
 
 .section-padding {
-    padding: 80px 0; /* Consistent padding for sections */
+    padding: 100px 0; /* Consistent generous padding for sections */
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
     color: var(--heading-color);
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* Increased margin below headings */
     line-height: 1.2;
+    font-weight: 700; /* Ensure headings are bold */
 }
 
-/* IMPORTANT: This rule ensures no ::after pseudo-element AND no border-bottom for any h2 by default */
 h2 {
-    font-size: 2.5em;
+    font-size: 3em; /* Larger main headings */
     text-align: center;
-    margin-bottom: 50px; /* This creates space below the heading */
-    position: unset; /* Ensure no relative positioning that could affect ::after */
+    margin-bottom: 60px; /* More space below main section headings */
+    position: relative; /* For potential future pseudo-element design, if desired */
     border-bottom: none !important; /* Explicitly remove any border-bottom */
 }
 
@@ -59,15 +65,15 @@ h2::after {
     display: none !important; /* Forcefully hide any ::after element */
 }
 
-
 a {
     color: var(--primary-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 a:hover {
-    color: #004085; /* A slightly darker blue */
+    color: var(--primary-dark);
+    transform: translateY(-1px); /* Slight lift on hover */
 }
 
 /* Buttons */
@@ -75,18 +81,22 @@ a:hover {
     display: inline-block;
     background-color: var(--primary-color);
     color: var(--white);
-    padding: 12px 25px;
-    border-radius: 5px;
+    padding: 15px 35px; /* Larger padding */
+    border-radius: 8px; /* Slightly more rounded corners */
     text-transform: uppercase;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 600; /* A bit heavier */
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     border: none;
     cursor: pointer;
+    box-shadow: var(--shadow-light); /* Subtle initial shadow */
 }
 
 .btn:hover {
-    background-color: #004085;
-    transform: translateY(-2px);
+    background-color: var(--primary-dark);
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: var(--shadow-medium); /* Deeper shadow on hover */
 }
 
 /* Header & Navigation */
@@ -97,7 +107,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow */
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08); /* More pronounced shadow */
 }
 
 header .container {
@@ -107,9 +117,10 @@ header .container {
 }
 
 .logo {
-    font-size: 1.8em;
+    font-size: 2em; /* Slightly larger logo */
     font-weight: 700;
     color: var(--primary-color);
+    letter-spacing: -0.5px;
 }
 
 nav ul {
@@ -118,528 +129,743 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 30px;
+    margin-left: 35px; /* More space between nav items */
 }
 
 nav ul li a {
     font-weight: 500;
     color: var(--text-color);
-    position: relative; /* Keep this for the nav hover effect */
+    position: relative;
+    padding-bottom: 8px; /* Space for underline effect */
+    font-size: 1.05em; /* Slightly larger nav links */
 }
 
-/* ONLY THE NAVIGATION LINKS WILL HAVE AN UNDERLINE ON HOVER/ACTIVE */
 nav ul li a::after {
     content: '';
     position: absolute;
     width: 0%;
-    height: 2px;
+    height: 3px; /* Thicker underline */
     background-color: var(--primary-color);
-    bottom: -5px;
+    bottom: 0px; /* Closer to text */
     left: 0;
-    transition: width 0.3s ease;
-    /* Ensure it's displayed for nav links, overriding the general h2::after */
+    transition: width 0.3s ease-out; /* Smoother animation */
     display: block !important;
 }
 
 nav ul li a:hover::after,
-nav ul li a.active::after { /* Add 'active' class via JS for current section */
+nav ul li a.active::after {
     width: 100%;
 }
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(to right, var(--secondary-color), var(--white));
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--white) 100%); /* Diagonal gradient */
     text-align: center;
-    padding: 100px 0;
+    padding: 120px 0; /* More padding */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 70vh; /* Make it take up more vertical space */
+    min-height: 85vh; /* Take up more vertical space */
+    position: relative; /* For potential background elements */
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(0, 86, 179, 0.05); /* Very subtle overlay graphic */
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 1;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: -70px;
+    right: -70px;
+    width: 250px;
+    height: 250px;
+    background-color: rgba(255, 111, 97, 0.03); /* Subtle accent graphic */
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: 1;
 }
 
 .hero-section .profile-pic {
-    width: 180px;
-    height: 180px;
+    width: 200px; /* Larger profile pic */
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 30px;
-    border: 5px solid var(--primary-color);
-    box-shadow: 0 0 0 8px rgba(0, 86, 179, 0.2); /* Outer glow effect */
-    transition: transform 0.3s ease;
+    margin-bottom: 40px; /* More space below pic */
+    border: 6px solid var(--primary-color); /* Thicker border */
+    box-shadow: 0 0 0 10px rgba(0, 86, 179, 0.15); /* More prominent outer glow */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother animation */
+    position: relative;
+    z-index: 2;
 }
 
 .hero-section .profile-pic:hover {
-    transform: scale(1.05);
+    transform: scale(1.08); /* More pronounced hover scale */
+    box-shadow: 0 0 0 12px rgba(0, 86, 179, 0.25);
 }
 
 .hero-section h2 {
-    font-size: 3.5em;
-    margin-bottom: 10px;
+    font-size: 4.5em; /* Even larger name */
+    margin-bottom: 15px;
     color: var(--primary-color);
-    /* No specific ::after override needed here if general h2::after handles it */
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-section h3 {
-    font-size: 1.8em;
+    font-size: 2em; /* Larger title */
     color: var(--dark-grey);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-weight: 400; /* Lighter weight for subtitle */
+    position: relative;
+    z-index: 2;
 }
 
 .hero-section p {
-    max-width: 700px;
-    font-size: 1.1em;
-    margin-bottom: 40px;
+    max-width: 800px; /* Wider paragraph */
+    font-size: 1.2em; /* Larger text */
+    margin-bottom: 50px;
     color: var(--dark-grey);
+    position: relative;
+    z-index: 2;
 }
 
 .social-links {
-    margin-top: 20px;
-    display: flex; /* Use flexbox for spacing */
-    justify-content: center; /* Center the icons */
-    gap: 25px; /* Add space between icons */
+    margin-top: 30px; /* More space */
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* More space between icons */
+    position: relative;
+    z-index: 2;
 }
 
 .social-links a {
     display: inline-block;
-    font-size: 2.5em; /* This is the key change for icon size */
+    font-size: 3em; /* Larger icons */
     color: var(--primary-color);
-    transition: transform 0.3s ease, color 0.3s ease;
+    transition: transform 0.3s ease-out, color 0.3s ease-out;
 }
 
 .social-links a:hover {
-    transform: translateY(-5px) scale(1.1);
-    color: #004085;
+    transform: translateY(-8px) scale(1.15); /* More dramatic lift and scale */
+    color: var(--primary-dark);
 }
 
 /* About Section */
 #about {
     background-color: var(--light-grey);
+    padding: 100px 0;
+}
+
+#about p {
+    font-size: 1.15em;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--dark-grey);
 }
 
 /* Skills & Subjects of Interest Section */
 .skills-interests-section {
-    background-color: var(--white); /* Ensure section background is white */
-    overflow: hidden; /* Clear floats or manage layout */
+    background-color: var(--white);
+    overflow: hidden;
 }
 
 .skills-interests-heading {
-    /* No specific styles needed here, as it should just be a regular h2 */
-    /* It will get its font-size, text-align, margin-bottom from the general h2 rule. */
+    /* Styles are handled by general h2 */
 }
 
-
 .skills-interests-content {
-    background-color: var(--white); /* White background for the content area */
-    padding-top: 0; /* No extra padding here, handled by section-padding */
-    padding-bottom: 0; /* No extra padding here */
-    display: flex; /* Use flexbox for the two columns */
-    justify-content: center; /* Center the columns */
-    gap: 80px; /* Space between the two columns */
-    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    background-color: var(--white);
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: center;
+    gap: 100px; /* Increased gap */
+    flex-wrap: wrap;
 }
 
 .skills-column,
 .subjects-column {
-    flex: 1; /* Allow columns to grow/shrink */
-    min-width: 280px; /* Minimum width before wrapping */
-    max-width: 450px; /* Maximum width for each column */
+    flex: 1;
+    min-width: 300px; /* Slightly larger min-width */
+    max-width: 480px; /* Slightly larger max-width */
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.skills-column:hover,
+.subjects-column:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px); /* Lift on hover */
 }
 
 .skills-column h3,
 .subjects-column h3 {
-    font-family: var(--font-serif);
-    font-size: 1.8em; /* Size for Skills/Subjects sub-headings */
-    color: var(--heading-color);
-    margin-bottom: 25px; /* Space below sub-heading */
-    text-align: left; /* Align to the left */
+    font-size: 2em; /* Larger sub-headings */
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: center; /* Centered sub-headings */
+    position: relative;
 }
+
+.skills-column h3::after,
+.subjects-column h3::after {
+    content: '';
+    position: absolute;
+    width: 60px; /* Short underline for h3 */
+    height: 3px;
+    background-color: var(--primary-color);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
 
 .skills-column ul,
 .subjects-column ul {
-    list-style: none; /* Remove default list bullets */
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
 .skills-column ul li,
 .subjects-column ul li {
-    font-size: 1.1em; /* Adjust font size for list items */
+    font-size: 1.15em; /* Larger list items */
     color: var(--text-color);
-    margin-bottom: 15px; /* Space between list items */
+    margin-bottom: 18px; /* More space between list items */
     position: relative;
-    padding-left: 20px; /* Space for custom bullet */
+    padding-left: 30px; /* More space for custom bullet */
+    text-align: left; /* Ensure text aligns left */
 }
 
-/* Custom bullet point for list items */
 .skills-column ul li::before,
 .subjects-column ul li::before {
-    content: '•'; /* Unicode character for a bullet */
-    color: var(--primary-color); /* Primary color for the bullet */
+    content: '★'; /* A star bullet for a stylish look */
+    color: var(--accent-color); /* Accent color for the bullet */
     position: absolute;
     left: 0;
-    font-size: 1.2em; /* Size of the bullet */
+    font-size: 1.3em; /* Size of the bullet */
     line-height: 1;
+    top: 2px; /* Adjust vertical alignment */
 }
 
-/* Publications & Education Section (general item styling) */
-#publications, #experience {
-    background-color: var(--white);
-}
 
-.placeholder-content {
-    background-color: #fff3cd; /* Light yellow background */
-    border-left: 5px solid #ffc107; /* Orange border */
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
-    text-align: center;
-    color: #664d03;
-    border-radius: 5px;
-}
-
-/* Styles for the container of all education items */
-.education-list {
+/* General item styling for Education, Publications, Conferences, Experience */
+.education-list,
+.publication-list, /* Assuming you'll add this class to publication section */
+.conferences-list { /* Assuming you'll add this class for multiple conference items */
     display: grid;
-    grid-template-columns: 1fr; /* Ensures items stack vertically on all screens */
-    gap: 30px; /* Space between each education item */
-    max-width: 800px; /* Constrain width for readability */
-    margin: 40px auto 0 auto; /* Center the list and add space from heading */
+    grid-template-columns: 1fr;
+    gap: 35px; /* More space between items */
+    max-width: 900px; /* Wider content area */
+    margin: 60px auto 0 auto; /* More space from heading */
 }
 
-/* Unified styling for education, publication, and teaching experience items */
 .publication-item,
 .experience-item,
-.education-item {
-    background-color: var(--light-grey); /* Using light-grey for item background */
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    transition: box-shadow 0.3s ease;
+.education-item,
+.conference-item {
+    background-color: var(--light-grey);
+    padding: 30px; /* More padding */
+    border-radius: 10px; /* More rounded corners */
+    box-shadow: var(--shadow-light);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    border-left: 5px solid var(--primary-color); /* Left border for emphasis */
 }
 
-/* Unified hover effect */
 .publication-item:hover,
 .experience-item:hover,
-.education-item:hover {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+.education-item:hover,
+.conference-item:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
+    border-color: var(--primary-dark); /* Darker border on hover */
 }
 
-/* Unified h3 styling for these items */
 .publication-item h3,
 .experience-item h3,
-.education-item h3 {
+.education-item h3,
+.conference-item h3 {
     margin-top: 0;
-    font-size: 1.4em;
+    font-size: 1.5em; /* Larger h3 */
     color: var(--primary-color);
-    margin-bottom: 5px;
+    margin-bottom: 8px; /* Reduced margin for tight info */
 }
 
-/* Unified paragraph styling for these items */
 .publication-item p,
 .experience-item p,
-.education-item p {
-    margin-bottom: 5px;
-    font-size: 0.95em;
+.education-item p,
+.conference-item p {
+    margin-bottom: 6px; /* Slightly reduced margin for tight info */
+    font-size: 1em; /* Standard size */
     color: var(--dark-grey);
 }
 
-/* Specific styling for unordered lists within experience items (if any) */
+.publication-item p strong,
+.experience-item p strong,
+.education-item p strong,
+.conference-item p strong {
+    color: var(--heading-color); /* Make strong text stand out */
+}
+
 .experience-item ul {
     list-style-type: disc;
-    margin-left: 20px;
+    margin-left: 25px;
     padding-left: 10px;
+    font-size: 0.95em;
+    color: var(--dark-grey);
 }
 
 .experience-item ul li {
     margin-bottom: 5px;
 }
 
-
 /* Styling for Teaching Experience Section */
 #teaching-experience {
-    background-color: var(--light-grey); /* Section background */
+    background-color: var(--secondary-color); /* Different background for contrast */
 }
 
 .teaching-experience-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Default to single column on small screens */
-    gap: 40px; /* Space between the two teaching roles */
+    grid-template-columns: 1fr;
+    gap: 40px;
     max-width: 900px;
-    margin: 40px auto 0 auto; /* Center the grid and add space from heading */
+    margin: 60px auto 0 auto; /* Consistent margin */
 }
 
-@media (min-width: 768px) { /* Two columns on larger screens */
+@media (min-width: 768px) {
     .teaching-experience-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 60px; /* More space between columns on desktop */
     }
 }
 
 .teaching-role {
-    background-color: var(--white); /* White background for individual role cards */
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    transition: box-shadow 0.3s ease;
-    display: flex; /* Use flex to align content within the card */
+    background-color: var(--white);
+    padding: 35px; /* More padding */
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    display: flex;
     flex-direction: column;
-    align-items: center; /* Center table horizontally within the card */
-    text-align: center; /* Center h3 */
+    align-items: center;
+    text-align: center;
+    border-bottom: 4px solid var(--accent-color); /* Accent border at bottom */
 }
 
 .teaching-role:hover {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
+    border-color: var(--primary-color); /* Change border color on hover */
 }
 
 .teaching-role h3 {
-    font-size: 1.6em;
+    font-size: 1.8em; /* Larger role titles */
     color: var(--primary-color);
     margin-bottom: 25px;
-    /* text-align: center; -- Already set by parent .teaching-role */
+    position: relative;
+}
+
+.teaching-role h3::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .teaching-role table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
-    table-layout: fixed; /* Ensures columns are of equal width or as defined */
+    margin-top: 20px; /* More space above table */
+    table-layout: fixed;
 }
 
 .teaching-role th,
 .teaching-role td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left; /* Left align text in table cells */
-    font-size: 0.95em;
-    word-wrap: break-word; /* Prevent long words from overflowing */
+    border: 1px solid var(--border-color);
+    padding: 15px; /* More padding in table cells */
+    text-align: center; /* Center table text */
+    font-size: 0.98em;
+    word-wrap: break-word;
 }
 
 .teaching-role th {
     background-color: var(--primary-color);
     color: var(--white);
-    font-weight: bold;
+    font-weight: 600; /* Stronger header font */
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-align: center; /* Center table headers */
+    letter-spacing: 0.7px;
+    border-color: var(--primary-dark); /* Darker border for header */
 }
 
 .teaching-role tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: var(--light-grey);
 }
 
 .teaching-role tbody tr:hover {
-    background-color: #e9e9e9;
+    background-color: #e0e0e0; /* Lighter hover for rows */
 }
 
 /* Styling for Conferences Attended Section */
 #conferences {
-    background-color: var(--white); /* Or choose your preferred background */
+    background-color: var(--white);
 }
 
-.conference-item {
-    background-color: var(--light-grey);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    transition: box-shadow 0.3s ease;
-    max-width: 800px;
-    margin: 40px auto; /* Center the item and give space from heading */
-}
+/* .conference-item already styled by general item styling */
 
-.conference-item:hover {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.conference-item h3 {
-    color: var(--primary-color);
-    font-size: 1.5em;
-    margin-bottom: 15px;
-}
-
-.conference-item p {
-    margin-bottom: 8px;
-    font-size: 1em;
-}
-
-.conference-item p strong {
-    color: var(--heading-color);
-}
-
-/* Optional: Styles for conference images if you add them later */
 .conference-images {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 20px; /* More space between images */
+    margin-top: 30px; /* More space above images */
     justify-content: center;
 }
 
 .conference-images img {
-    max-width: 100%;
+    max-width: 48%; /* Adjust for 2 images per row with gap */
     height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px; /* Slightly more rounded images */
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@media (max-width: 600px) {
-    .conference-images img {
-        width: 100%; /* Stack images on small screens */
-    }
+.conference-images img:hover {
+    transform: scale(1.03); /* Subtle zoom on hover */
+    box-shadow: var(--shadow-medium);
 }
-
 
 /* Contact Section */
 #contact {
-    background-color: var(--secondary-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); /* Blue gradient background */
+    color: var(--white);
     text-align: center;
+    padding: 100px 0;
+}
+
+#contact h2 {
+    color: var(--white); /* White heading for dark background */
+}
+
+#contact p {
+    color: rgba(255,255,255,0.9); /* Lighter text for dark background */
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
 }
 
 .contact-form {
-    max-width: 600px;
+    max-width: 650px; /* Slightly wider form */
     margin: 40px auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px; /* More space between form fields */
+    background-color: var(--white); /* White form background */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2); /* Stronger shadow for form */
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 18px; /* More padding in inputs */
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* More rounded inputs */
     font-family: var(--font-sans);
-    font-size: 1em;
+    font-size: 1.05em; /* Slightly larger text in inputs */
+    color: var(--text-color);
+    background-color: var(--light-grey); /* Light background for inputs */
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+    box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.25); /* More prominent focus ring */
     outline: none;
+    background-color: var(--white);
+}
+
+.contact-form textarea {
+    min-height: 150px; /* Taller textarea */
+    resize: vertical;
+}
+
+.contact-form .btn {
+    align-self: center; /* Center button in form */
+    margin-top: 15px; /* Space above button */
 }
 
 .contact-info {
-    margin-top: 30px;
-    font-size: 1.1em;
-    color: var(--dark-grey);
+    margin-top: 40px; /* More space */
+    font-size: 1.2em; /* Larger info text */
+    color: rgba(255,255,255,0.9);
+}
+
+.contact-info a {
+    color: var(--white);
+    font-weight: 500;
+    text-decoration: underline;
+}
+.contact-info a:hover {
+    color: var(--accent-color); /* Highlight contact links on hover */
 }
 
 /* Footer */
 footer {
-    background-color: var(--heading-color);
+    background-color: var(--heading-color); /* Darker footer */
     color: var(--white);
-    padding: 40px 0;
+    padding: 50px 0; /* More padding */
     text-align: center;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    letter-spacing: 0.2px;
 }
 
 footer p {
-    margin-bottom: 5px;
+    margin-bottom: 8px; /* Space between lines */
+    opacity: 0.9;
 }
 
 footer i {
-    color: #e74c3c; /* Red heart */
-    margin: 0 5px;
+    color: var(--accent-color); /* Accent color heart */
+    margin: 0 6px;
+    font-size: 1.1em;
 }
 
 /* Responsive Design */
+@media (max-width: 992px) {
+    .container {
+        padding: 0 20px;
+    }
+    .section-padding {
+        padding: 80px 0;
+    }
+    h2 {
+        font-size: 2.5em;
+        margin-bottom: 50px;
+    }
+    .hero-section {
+        min-height: 75vh;
+        padding: 100px 0;
+    }
+    .hero-section h2 {
+        font-size: 3.8em;
+    }
+    .hero-section h3 {
+        font-size: 1.8em;
+    }
+    .hero-section p {
+        font-size: 1.1em;
+    }
+    .hero-section .profile-pic {
+        width: 180px;
+        height: 180px;
+    }
+    nav ul li {
+        margin-left: 25px;
+    }
+    .skills-interests-content {
+        gap: 60px;
+    }
+    .skills-column,
+    .subjects-column {
+        min-width: 250px;
+    }
+}
+
 @media (max-width: 768px) {
     h2 {
         font-size: 2em;
-        margin-bottom: 30px;
-        position: unset; /* Ensure no relative positioning that could affect ::after */
-        border-bottom: none !important; /* Explicitly remove any border-bottom on mobile */
+        margin-bottom: 40px;
     }
-    h2::after { /* Also apply forcefully on mobile if needed */
-        content: none !important;
-        display: none !important;
+    .hero-section {
+        min-height: 65vh;
+        padding: 80px 0;
     }
-
-
     .hero-section h2 {
-        font-size: 2.5em;
-        /* No specific ::after override needed here if general h2::after handles it */
+        font-size: 3em;
+        margin-bottom: 10px;
     }
-
     .hero-section h3 {
-        font-size: 1.4em;
+        font-size: 1.5em;
+        margin-bottom: 25px;
     }
-
+    .hero-section p {
+        font-size: 1em;
+        margin-bottom: 40px;
+    }
+    .hero-section .profile-pic {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 30px;
+    }
+    .social-links a {
+        font-size: 2.5em;
+        gap: 20px;
+    }
     header .container {
         flex-direction: column;
+        align-items: center;
+        padding: 15px 20px;
     }
-
+    .logo {
+        margin-bottom: 15px;
+    }
     nav ul {
         margin-top: 15px;
         flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
     }
-
     nav ul li {
-        margin: 0 10px 10px 10px;
+        margin: 0 12px 10px 12px; /* Adjusted spacing for wrapped items */
     }
-
+    nav ul li a {
+        font-size: 0.95em;
+    }
     .section-padding {
         padding: 60px 0;
     }
-
-    /* Responsive adjustments for Skills & Subjects of Interest */
-    .skills-interests-heading {
-        font-size: 2.2em; /* Keep responsive font size if desired */
-    }
-
     .skills-interests-content {
-        flex-direction: column; /* Stack columns vertically on smaller screens */
-        gap: 50px; /* Adjust gap for vertical stacking */
-        padding-left: 20px;
-        padding-right: 20px;
+        flex-direction: column;
+        gap: 40px;
     }
-
     .skills-column,
     .subjects-column {
-        min-width: unset; /* Remove min-width when stacking */
-        max-width: 100%; /* Take full width when stacked */
-        text-align: center; /* Center content when stacked */
+        max-width: 100%;
+        text-align: left; /* Keep text aligned left for better readability in stacked layout */
+        padding: 25px;
     }
-
     .skills-column h3,
     .subjects-column h3 {
-        text-align: center; /* Center sub-headings when stacked */
+        text-align: center;
+        margin-bottom: 20px;
     }
-
-    /* Adjust list item alignment for stacked view */
+    .skills-column h3::after,
+    .subjects-column h3::after {
+        bottom: -5px;
+    }
     .skills-column ul li,
     .subjects-column ul li {
-        padding-left: 0; /* Remove padding if text is centered */
-        text-align: center;
+        padding-left: 25px;
+        font-size: 1.05em;
     }
-    .skills-column ul li::before,
-    .subjects-column ul li::before {
-        content: none; /* Remove custom bullet if text is centered and list style none */
+    .teaching-experience-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .teaching-role {
+        padding: 25px;
+    }
+    .teaching-role h3 {
+        font-size: 1.6em;
+    }
+    .teaching-role th,
+    .teaching-role td {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    .conference-item {
+        margin: 30px auto;
+        padding: 25px;
+    }
+    .conference-images {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .conference-images img {
+        max-width: 100%;
+    }
+    .contact-form {
+        padding: 30px;
+        gap: 20px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        padding: 15px;
     }
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    .hero-section h2 {
+        font-size: 2.5em;
+    }
+    .hero-section h3 {
+        font-size: 1.2em;
+    }
     .hero-section .profile-pic {
         width: 120px;
         height: 120px;
     }
-
-    .hero-section h2 {
-        font-size: 2em;
+    .social-links a {
+        font-size: 2.2em;
+        gap: 15px;
     }
-
-    .hero-section h3 {
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+    h2 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    .skills-column h3,
+    .subjects-column h3 {
+        font-size: 1.6em;
+    }
+    .skills-column ul li,
+    .subjects-column ul li {
+        font-size: 1em;
+        margin-bottom: 12px;
+        padding-left: 20px;
+    }
+    .skills-column ul li::before,
+    .subjects-column ul li::before {
         font-size: 1.2em;
     }
-
-    .social-links a {
-        font-size: 2em; /* Slightly smaller on very small screens, still readable */
+    .teaching-role h3 {
+        font-size: 1.4em;
     }
-
+    .teaching-role th,
+    .teaching-role td {
+        padding: 8px;
+        font-size: 0.85em;
+    }
     .contact-form {
-        padding: 0 10px;
+        padding: 20px;
+        gap: 15px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px;
+        font-size: 0.95em;
+    }
+    footer {
+        padding: 30px 0;
+        font-size: 0.85em;
     }
 }
