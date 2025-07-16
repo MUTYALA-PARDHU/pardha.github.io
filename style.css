@@ -217,52 +217,51 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     background-color: var(--light-grey);
 }
 
-/* Skills & Subjects of Interest Section */
-/* MODIFIED: Removed dark background from the heading container */
+/* Skills & Subjects of Interest Section - SIMPLIFIED STYLING */
 .skills-interests-section {
-    padding-top: 80px; /* Add padding to the top of the section */
-    padding-bottom: 80px; /* Consistent bottom padding */
-    overflow: hidden; /* Clear floats if any or manage layout */
+    /* section-padding class will handle padding */
     background-color: var(--white); /* Ensure section background is white */
+    overflow: hidden; /* Clear floats or manage layout */
 }
 
+/* This container is now primarily for centering and width constraint, not background */
 .skills-interests-heading-container {
-    /* REMOVED: background-color: var(--heading-color); */
-    /* REMOVED: color: var(--white); */
-    padding: 0; /* Reset padding from here */
+    /* No specific background or padding needed here anymore */
     text-align: center;
-    margin-bottom: 50px; /* Space between heading and content */
+    /* The h2 will inherit the default h2 styling from above, including margin-bottom */
 }
 
+/* The h2 within this section will use the general h2 rules */
 .skills-interests-heading {
-    color: var(--heading-color); /* Change heading color to dark */
-    font-size: 2.5em; /* Match general h2 size */
-    margin-bottom: 20px; /* Adjust spacing below heading */
-    position: relative; /* For the underline effect */
+    /* This rule is kept just in case you want to override the general h2 for this specific heading later,
+       but currently it simply inherits, ensuring consistency. */
+    /* You could remove this if you truly want it to be identical to other h2s */
+    /* For now, ensuring it uses default h2 styles. */
 }
 
-/* Ensure the heading underline remains */
+/* The :after pseudo-element for the underline on the h2 */
 .skills-interests-heading::after {
     content: '';
     position: absolute;
-    bottom: -10px; /* Position the underline */
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px; /* Match general h2 underline width */
+    width: 60px;
     height: 4px;
-    background-color: var(--primary-color); /* Primary color underline */
+    background-color: var(--primary-color);
     border-radius: 2px;
 }
 
 
 .skills-interests-content {
     background-color: var(--white); /* White background for the content area */
-    padding-top: 0; /* Removed padding here as it's now in the section-padding */
-    padding-bottom: 20px; /* Small padding at the bottom */
+    padding-top: 0; /* No extra padding here, handled by section-padding */
+    padding-bottom: 0; /* No extra padding here */
     display: flex; /* Use flexbox for the two columns */
     justify-content: center; /* Center the columns */
     gap: 80px; /* Space between the two columns */
     flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    margin-top: 20px; /* Add some space below the main heading and before columns start */
 }
 
 .skills-column,
