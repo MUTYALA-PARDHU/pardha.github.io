@@ -218,41 +218,46 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
 }
 
 /* Skills & Subjects of Interest Section */
+/* MODIFIED: Removed dark background from the heading container */
 .skills-interests-section {
+    padding-top: 80px; /* Add padding to the top of the section */
     padding-bottom: 80px; /* Consistent bottom padding */
     overflow: hidden; /* Clear floats if any or manage layout */
+    background-color: var(--white); /* Ensure section background is white */
 }
 
 .skills-interests-heading-container {
-    background-color: var(--heading-color); /* Dark background for the heading */
-    color: var(--white);
-    padding: 60px 0 40px 0; /* Top/bottom padding for the dark section */
+    /* REMOVED: background-color: var(--heading-color); */
+    /* REMOVED: color: var(--white); */
+    padding: 0; /* Reset padding from here */
     text-align: center;
-    margin-bottom: 0; /* No margin at the bottom of the dark section */
+    margin-bottom: 50px; /* Space between heading and content */
 }
 
 .skills-interests-heading {
-    color: var(--white); /* White text for the heading */
-    font-size: 2.8em; /* Slightly larger for impact */
+    color: var(--heading-color); /* Change heading color to dark */
+    font-size: 2.5em; /* Match general h2 size */
     margin-bottom: 20px; /* Adjust spacing below heading */
     position: relative; /* For the underline effect */
 }
 
+/* Ensure the heading underline remains */
 .skills-interests-heading::after {
     content: '';
     position: absolute;
     bottom: -10px; /* Position the underline */
     left: 50%;
     transform: translateX(-50%);
-    width: 80px; /* Wider underline */
+    width: 60px; /* Match general h2 underline width */
     height: 4px;
     background-color: var(--primary-color); /* Primary color underline */
     border-radius: 2px;
 }
 
+
 .skills-interests-content {
     background-color: var(--white); /* White background for the content area */
-    padding-top: 50px; /* Padding above the content columns */
+    padding-top: 0; /* Removed padding here as it's now in the section-padding */
     padding-bottom: 20px; /* Small padding at the bottom */
     display: flex; /* Use flexbox for the two columns */
     justify-content: center; /* Center the columns */
