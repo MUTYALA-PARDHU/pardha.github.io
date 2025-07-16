@@ -49,11 +49,10 @@ h2 {
     font-size: 2.5em;
     text-align: center;
     margin-bottom: 50px; /* This creates space below the heading */
-    /* Removed 'position: relative;' as it's only needed for pseudo-elements */
-    /* if no pseudo-element relies on it, it can be removed for cleaner CSS */
+    /* No position: relative; or pseudo-elements for general h2 */
 }
 
-/* REMOVED: h2::after { ... } - This was the rule creating the underlines */
+/* No h2::after rule here, as requested */
 
 
 a {
@@ -120,9 +119,10 @@ nav ul li {
 nav ul li a {
     font-weight: 500;
     color: var(--text-color);
-    position: relative;
+    position: relative; /* Keep this for the nav hover effect */
 }
 
+/* ONLY THE NAVIGATION LINKS WILL HAVE AN UNDERLINE ON HOVER/ACTIVE */
 nav ul li a::after {
     content: '';
     position: absolute;
@@ -170,7 +170,14 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     font-size: 3.5em;
     margin-bottom: 10px;
     color: var(--primary-color);
+    /* Ensure no pseudo-element or border-bottom is causing an underline here */
+    position: unset; /* Override any potential 'position: relative' from general h2 */
 }
+/* Explicitly ensure no pseudo-element on hero h2 */
+.hero-section h2::after {
+    content: none;
+}
+
 
 .hero-section h3 {
     font-size: 1.8em;
@@ -217,8 +224,7 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
 
 .skills-interests-heading {
     /* No specific styles needed here, as it should just be a regular h2 */
-    /* It will get its font-size, text-align, margin-bottom, position, and ::after from the general h2 rule. */
-    /* Since we removed the general h2::after, this heading will also not have an underline. */
+    /* It will get its font-size, text-align, margin-bottom from the general h2 rule. */
 }
 
 
@@ -413,7 +419,14 @@ footer i {
 
     .hero-section h2 {
         font-size: 2.5em;
+        /* Ensure no pseudo-element or border-bottom is causing an underline here on mobile */
+        position: unset; /* Override any potential 'position: relative' from general h2 */
     }
+    /* Explicitly ensure no pseudo-element on hero h2 on mobile */
+    .hero-section h2::after {
+        content: none;
+    }
+
 
     .hero-section h3 {
         font-size: 1.4em;
