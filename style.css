@@ -217,7 +217,95 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     background-color: var(--light-grey);
 }
 
-/* Research Interests Section */
+/* Skills & Subjects of Interest Section */
+.skills-interests-section {
+    padding-bottom: 80px; /* Consistent bottom padding */
+    overflow: hidden; /* Clear floats if any or manage layout */
+}
+
+.skills-interests-heading-container {
+    background-color: var(--heading-color); /* Dark background for the heading */
+    color: var(--white);
+    padding: 60px 0 40px 0; /* Top/bottom padding for the dark section */
+    text-align: center;
+    margin-bottom: 0; /* No margin at the bottom of the dark section */
+}
+
+.skills-interests-heading {
+    color: var(--white); /* White text for the heading */
+    font-size: 2.8em; /* Slightly larger for impact */
+    margin-bottom: 20px; /* Adjust spacing below heading */
+    position: relative; /* For the underline effect */
+}
+
+.skills-interests-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Position the underline */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; /* Wider underline */
+    height: 4px;
+    background-color: var(--primary-color); /* Primary color underline */
+    border-radius: 2px;
+}
+
+.skills-interests-content {
+    background-color: var(--white); /* White background for the content area */
+    padding-top: 50px; /* Padding above the content columns */
+    padding-bottom: 20px; /* Small padding at the bottom */
+    display: flex; /* Use flexbox for the two columns */
+    justify-content: center; /* Center the columns */
+    gap: 80px; /* Space between the two columns */
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+}
+
+.skills-column,
+.subjects-column {
+    flex: 1; /* Allow columns to grow/shrink */
+    min-width: 280px; /* Minimum width before wrapping */
+    max-width: 450px; /* Maximum width for each column */
+}
+
+.skills-column h3,
+.subjects-column h3 {
+    font-family: var(--font-serif);
+    font-size: 1.8em; /* Size for Skills/Subjects sub-headings */
+    color: var(--heading-color);
+    margin-bottom: 25px; /* Space below sub-heading */
+    text-align: left; /* Align to the left */
+}
+
+.skills-column ul,
+.subjects-column ul {
+    list-style: none; /* Remove default list bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.skills-column ul li,
+.subjects-column ul li {
+    font-size: 1.1em; /* Adjust font size for list items */
+    color: var(--text-color);
+    margin-bottom: 15px; /* Space between list items */
+    position: relative;
+    padding-left: 20px; /* Space for custom bullet */
+}
+
+/* Custom bullet point for list items */
+.skills-column ul li::before,
+.subjects-column ul li::before {
+    content: '•'; /* Unicode character for a bullet */
+    color: var(--primary-color); /* Primary color for the bullet */
+    position: absolute;
+    left: 0;
+    font-size: 1.2em; /* Size of the bullet */
+    line-height: 1;
+}
+
+
+/* REMOVED: Research Interests Section Styles */
+/*
 #research-interests .interests-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -255,6 +343,7 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     font-size: 0.95em;
     color: var(--dark-grey);
 }
+*/
 
 /* Publications & Experience Section */
 #publications, #experience {
@@ -418,8 +507,39 @@ footer i {
         padding: 60px 0;
     }
 
-    .interests-grid {
-        grid-template-columns: 1fr; /* Stack on smaller screens */
+    /* Responsive adjustments for Skills & Subjects of Interest */
+    .skills-interests-heading {
+        font-size: 2.2em;
+    }
+
+    .skills-interests-content {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+        gap: 50px; /* Adjust gap for vertical stacking */
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .skills-column,
+    .subjects-column {
+        min-width: unset; /* Remove min-width when stacking */
+        max-width: 100%; /* Take full width when stacked */
+        text-align: center; /* Center content when stacked */
+    }
+
+    .skills-column h3,
+    .subjects-column h3 {
+        text-align: center; /* Center sub-headings when stacked */
+    }
+
+    /* Adjust list item alignment for stacked view */
+    .skills-column ul li,
+    .subjects-column ul li {
+        padding-left: 0; /* Remove padding if text is centered */
+        text-align: center;
+    }
+    .skills-column ul li::before,
+    .subjects-column ul li::before {
+        content: none; /* Remove custom bullet if text is centered and list style none */
     }
 }
 
