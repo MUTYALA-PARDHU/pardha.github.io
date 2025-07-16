@@ -1,21 +1,23 @@
 /* Universal Styles & Variables */
 :root {
-    /* Black and Green Color Scheme */
-    --primary-color: #4CAF50; /* Vibrant Green */
-    --primary-dark: #388E3C; /* Darker Green for hover */
-    --secondary-color: #282828; /* Dark Grey for contrasting sections */
-    --accent-color: #8BC34A; /* Lighter/Brighter Green for highlights */
-    --text-color: #f0f0f0; /* Off-White for general text on dark backgrounds */
-    --heading-color: #e0e0e0; /* Light Grey for headings */
-    --white: #ffffff; /* Remains white for specific elements, e.g., table headers */
-    --light-grey: #333333; /* A darker grey for elements that were light-grey before */
-    --dark-grey: #aaaaaa; /* A medium-light grey for elements that were dark-grey before, now on a dark background */
-    --border-color: #444444; /* Darker border color */
+    /* Gradient Black and Green Color Scheme */
+    --bg-dark-primary: #0A0E1A; /* Very deep, dark blue/charcoal - main background */
+    --bg-dark-secondary: #1C2030; /* Slightly lighter dark blue/charcoal - for alternating sections */
+    --bg-dark-tertiary: #2D3247; /* For cards/panels on darker sections */
+
+    --green-primary: #00E676; /* Vibrant, almost neon green */
+    --green-dark: #00C853; /* Darker green for hover */
+    --green-accent: #69F0AE; /* Lighter, brighter green for subtle highlights */
+
+    --text-light: #E0E0E0; /* Soft light grey for general text */
+    --heading-light: #F8F8F8; /* Near white for main headings */
+    --border-dark: #3C4257; /* Subtle dark border for elements */
+    --white: #ffffff; /* For pure white elements */
 
     --font-sans: 'Roboto', sans-serif;
     --font-serif: 'Lora', serif;
-    --shadow-light: 0 2px 8px rgba(0,0,0,0.4); /* Darker shadow for dark background */
-    --shadow-medium: 0 4px 15px rgba(0,0,0,0.6); /* More pronounced darker shadow */
+    --shadow-light: 0 5px 15px rgba(0,0,0,0.5); /* Enhanced shadow for dark background */
+    --shadow-medium: 0 10px 25px rgba(0,0,0,0.7); /* More pronounced shadow */
 }
 
 * {
@@ -30,36 +32,37 @@ html {
 
 body {
     font-family: var(--font-sans);
-    line-height: 1.7; /* Slightly increased for readability */
-    color: var(--text-color);
-    background-color: #1a1a1a; /* Deep charcoal background */
-    overflow-x: hidden; /* Prevent horizontal scroll on some mobile layouts */
+    line-height: 1.7;
+    color: var(--text-light);
+    background-color: var(--bg-dark-primary); /* Main body background */
+    overflow-x: hidden;
 }
 
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 25px; /* Slightly more padding on sides */
+    padding: 0 25px;
 }
 
 .section-padding {
-    padding: 100px 0; /* Consistent generous padding for sections */
+    padding: 100px 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
-    color: var(--heading-color);
-    margin-bottom: 25px; /* Increased margin below headings */
+    color: var(--heading-light); /* Light headings */
+    margin-bottom: 25px;
     line-height: 1.2;
-    font-weight: 700; /* Ensure headings are bold */
+    font-weight: 700;
 }
 
 h2 {
-    font-size: 3em; /* Larger main headings */
+    font-size: 3em;
     text-align: center;
-    margin-bottom: 60px; /* More space below main section headings */
+    margin-bottom: 60px;
     position: relative;
     border-bottom: none !important;
+    text-shadow: 0 0 10px rgba(0,230,118,0.2); /* Subtle glow for main headings */
 }
 
 h2::after {
@@ -69,48 +72,48 @@ h2::after {
 
 
 a {
-    color: var(--primary-color);
+    color: var(--green-primary); /* Green links */
     text-decoration: none;
     transition: color 0.3s ease, transform 0.2s ease;
 }
 
 a:hover {
-    color: var(--primary-dark);
-    transform: translateY(-1px); /* Slight lift on hover */
+    color: var(--green-accent); /* Lighter green on hover */
+    transform: translateY(-1px);
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
-    background-color: var(--primary-color);
+    background: linear-gradient(45deg, var(--green-primary), var(--green-dark)); /* Green gradient button */
     color: var(--white);
-    padding: 15px 35px; /* Larger padding */
-    border-radius: 8px; /* Slightly more rounded corners */
+    padding: 15px 35px;
+    border-radius: 8px;
     text-transform: uppercase;
-    font-weight: 600; /* A bit heavier */
+    font-weight: 600;
     font-size: 0.95em;
     letter-spacing: 0.5px;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     border: none;
     cursor: pointer;
-    box-shadow: var(--shadow-light); /* Subtle initial shadow */
+    box-shadow: var(--shadow-light);
 }
 
 .btn:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-3px); /* More pronounced lift */
-    box-shadow: var(--shadow-medium); /* Deeper shadow on hover */
+    background: linear-gradient(45deg, var(--green-accent), var(--green-primary)); /* Lighter gradient on hover */
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
 }
 
 /* Header & Navigation */
 header {
-    background-color: #0d0d0d; /* Near black header */
+    background-color: var(--bg-dark-primary); /* Dark primary background */
     padding: 20px 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-dark);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.3); /* More pronounced shadow */
+    box-shadow: 0 3px 15px rgba(0,0,0,0.4);
 }
 
 header .container {
@@ -120,10 +123,11 @@ header .container {
 }
 
 .logo {
-    font-size: 2em; /* Slightly larger logo */
+    font-size: 2em;
     font-weight: 700;
-    color: var(--primary-color); /* Green logo */
+    color: var(--green-primary); /* Green logo */
     letter-spacing: -0.5px;
+    text-shadow: 0 0 5px rgba(0,230,118,0.3); /* Subtle glow for logo */
 }
 
 nav ul {
@@ -132,26 +136,26 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 35px; /* More space between nav items */
+    margin-left: 35px;
 }
 
 nav ul li a {
     font-weight: 500;
-    color: var(--text-color); /* Light text for nav links */
+    color: var(--text-light); /* Light text for nav links */
     position: relative;
-    padding-bottom: 8px; /* Space for underline effect */
-    font-size: 1.05em; /* Slightly larger nav links */
+    padding-bottom: 8px;
+    font-size: 1.05em;
 }
 
 nav ul li a::after {
     content: '';
     position: absolute;
     width: 0%;
-    height: 3px; /* Thicker underline */
-    background-color: var(--primary-color);
-    bottom: 0px; /* Closer to text */
+    height: 3px;
+    background-color: var(--green-primary); /* Green underline */
+    bottom: 0px;
     left: 0;
-    transition: width 0.3s ease-out; /* Smoother animation */
+    transition: width 0.3s ease-out;
     display: block !important;
 }
 
@@ -162,17 +166,17 @@ nav ul li a.active::after {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%); /* Dark gradient */
+    background: linear-gradient(135deg, var(--bg-dark-primary) 0%, var(--bg-dark-secondary) 100%); /* Dark gradient */
     text-align: center;
-    padding: 120px 0; /* More padding */
+    padding: 120px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 85vh; /* Take up more vertical space */
+    min-height: 85vh;
     position: relative;
     overflow: hidden;
-    color: var(--text-color); /* Ensure text is light */
+    color: var(--text-light);
 }
 
 .hero-section::before {
@@ -182,7 +186,7 @@ nav ul li a.active::after {
     left: -50px;
     width: 200px;
     height: 200px;
-    background-color: rgba(76, 175, 80, 0.08); /* Subtle green overlay graphic */
+    background-color: rgba(0,230,118,0.08); /* Subtle green glow */
     border-radius: 50%;
     filter: blur(80px);
     z-index: 1;
@@ -195,42 +199,43 @@ nav ul li a.active::after {
     right: -70px;
     width: 250px;
     height: 250px;
-    background-color: rgba(139, 195, 74, 0.05); /* Subtle accent green graphic */
+    background-color: rgba(105,240,174,0.05); /* Subtle accent green glow */
     border-radius: 50%;
     filter: blur(90px);
     z-index: 1;
 }
 
 .hero-section .profile-pic {
-    width: 200px; /* Larger profile pic */
+    width: 200px;
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 40px; /* More space below pic */
-    border: 6px solid var(--primary-color); /* Thicker green border */
-    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0.25); /* More prominent outer green glow */
+    margin-bottom: 40px;
+    border: 6px solid var(--green-primary); /* Green border */
+    box-shadow: 0 0 0 10px rgba(0,230,118,0.25), 0 0 25px rgba(0,230,118,0.4); /* Prominent green glow */
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     z-index: 2;
 }
 
 .hero-section .profile-pic:hover {
-    transform: scale(1.08); /* More pronounced hover scale */
-    box-shadow: 0 0 0 12px rgba(76, 175, 80, 0.4);
+    transform: scale(1.08);
+    box-shadow: 0 0 0 12px rgba(0,230,118,0.35), 0 0 35px rgba(0,230,118,0.6);
 }
 
 .hero-section h2 {
-    font-size: 4.5em; /* Even larger name */
+    font-size: 4.5em;
     margin-bottom: 15px;
-    color: var(--primary-color); /* Green name */
+    color: var(--green-primary); /* Green name */
     letter-spacing: -1px;
     position: relative;
     z-index: 2;
+    text-shadow: 0 0 15px rgba(0,230,118,0.4); /* Stronger glow for name */
 }
 
 .hero-section h3 {
-    font-size: 2em; /* Larger title */
-    color: var(--dark-grey); /* Lighter grey subtitle */
+    font-size: 2em;
+    color: var(--text-light); /* Light subtitle */
     margin-bottom: 30px;
     font-weight: 400;
     position: relative;
@@ -238,38 +243,40 @@ nav ul li a.active::after {
 }
 
 .hero-section p {
-    max-width: 800px; /* Wider paragraph */
-    font-size: 1.2em; /* Larger text */
+    max-width: 800px;
+    font-size: 1.2em;
     margin-bottom: 50px;
-    color: var(--dark-grey); /* Lighter grey paragraph text */
+    color: var(--text-light); /* Light paragraph text */
     position: relative;
     z-index: 2;
 }
 
 .social-links {
-    margin-top: 30px; /* More space */
+    margin-top: 30px;
     display: flex;
     justify-content: center;
-    gap: 30px; /* More space between icons */
+    gap: 30px;
     position: relative;
     z-index: 2;
 }
 
 .social-links a {
     display: inline-block;
-    font-size: 3em; /* Larger icons */
-    color: var(--primary-color); /* Green icons */
-    transition: transform 0.3s ease-out, color 0.3s ease-out;
+    font-size: 3em;
+    color: var(--green-primary); /* Green icons */
+    text-shadow: 0 0 10px rgba(0,230,118,0.3); /* Icon glow */
+    transition: transform 0.3s ease-out, color 0.3s ease-out, text-shadow 0.3s ease-out;
 }
 
 .social-links a:hover {
-    transform: translateY(-8px) scale(1.15); /* More dramatic lift and scale */
-    color: var(--accent-color); /* Accent green on hover */
+    transform: translateY(-8px) scale(1.15);
+    color: var(--green-accent); /* Lighter green on hover */
+    text-shadow: 0 0 20px rgba(105,240,174,0.6);
 }
 
 /* About Section */
 #about {
-    background-color: #1a1a1a; /* Deep charcoal */
+    background: linear-gradient(135deg, var(--bg-dark-secondary) 0%, var(--bg-dark-primary) 100%); /* Subtle gradient */
     padding: 100px 0;
 }
 
@@ -278,22 +285,22 @@ nav ul li a.active::after {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-    color: var(--dark-grey); /* Lighter grey text */
+    color: var(--text-light);
 }
 
 /* Skills & Subjects of Interest Section */
 .skills-interests-section {
-    background-color: #1a1a1a;
+    background-color: var(--bg-dark-primary); /* Main dark background */
     overflow: hidden;
 }
 
 .skills-interests-content {
-    background-color: #1a1a1a;
+    background-color: transparent; /* Transparent to show section background */
     padding-top: 0;
     padding-bottom: 0;
     display: flex;
     justify-content: center;
-    gap: 100px; /* Increased gap */
+    gap: 100px;
     flex-wrap: wrap;
 }
 
@@ -302,35 +309,38 @@ nav ul li a.active::after {
     flex: 1;
     min-width: 300px;
     max-width: 480px;
-    background-color: var(--secondary-color); /* Darker background for cards */
+    background-color: var(--bg-dark-tertiary); /* Darker card background */
     padding: 30px;
     border-radius: 10px;
     box-shadow: var(--shadow-light);
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    transition: box-shadow 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    border: 1px solid var(--border-dark); /* Subtle border */
 }
 
 .skills-column:hover,
 .subjects-column:hover {
     box-shadow: var(--shadow-medium);
-    transform: translateY(-5px); /* Lift on hover */
+    transform: translateY(-5px);
+    border-color: var(--green-primary); /* Green border on hover */
 }
 
 .skills-column h3,
 .subjects-column h3 {
-    font-size: 2em; /* Larger sub-headings */
-    color: var(--primary-color); /* Green sub-headings */
+    font-size: 2em;
+    color: var(--green-primary); /* Green sub-headings */
     margin-bottom: 30px;
     text-align: center;
     position: relative;
+    text-shadow: 0 0 5px rgba(0,230,118,0.2);
 }
 
 .skills-column h3::after,
 .subjects-column h3::after {
     content: '';
     position: absolute;
-    width: 60px; /* Short underline for h3 */
+    width: 60px;
     height: 3px;
-    background-color: var(--primary-color);
+    background-color: var(--green-primary);
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
@@ -347,8 +357,8 @@ nav ul li a.active::after {
 
 .skills-column ul li,
 .subjects-column ul li {
-    font-size: 1.15em; /* Larger list items */
-    color: var(--text-color); /* Light text for list items */
+    font-size: 1.15em;
+    color: var(--text-light);
     margin-bottom: 18px;
     position: relative;
     padding-left: 30px;
@@ -357,8 +367,8 @@ nav ul li a.active::after {
 
 .skills-column ul li::before,
 .subjects-column ul li::before {
-    content: '★'; /* A star bullet for a stylish look */
-    color: var(--accent-color); /* Accent green for the bullet */
+    content: '✦'; /* A different star/sparkle for a techy look */
+    color: var(--green-accent); /* Accent green for the bullet */
     position: absolute;
     left: 0;
     font-size: 1.3em;
@@ -382,12 +392,12 @@ nav ul li a.active::after {
 .experience-item,
 .education-item,
 .conference-item {
-    background-color: var(--secondary-color); /* Dark grey background for items */
+    background-color: var(--bg-dark-tertiary); /* Dark card background */
     padding: 30px;
     border-radius: 10px;
     box-shadow: var(--shadow-light);
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
-    border-left: 5px solid var(--primary-color); /* Green left border */
+    transition: box-shadow 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    border-left: 5px solid var(--green-primary); /* Green left border */
 }
 
 .publication-item:hover,
@@ -396,7 +406,7 @@ nav ul li a.active::after {
 .conference-item:hover {
     box-shadow: var(--shadow-medium);
     transform: translateY(-5px);
-    border-color: var(--primary-dark); /* Darker green border on hover */
+    border-color: var(--green-accent); /* Lighter green border on hover */
 }
 
 .publication-item h3,
@@ -405,7 +415,7 @@ nav ul li a.active::after {
 .conference-item h3 {
     margin-top: 0;
     font-size: 1.5em;
-    color: var(--primary-color); /* Green headings */
+    color: var(--green-primary); /* Green headings */
     margin-bottom: 8px;
 }
 
@@ -415,14 +425,14 @@ nav ul li a.active::after {
 .conference-item p {
     margin-bottom: 6px;
     font-size: 1em;
-    color: var(--dark-grey); /* Lighter grey text */
+    color: var(--text-light); /* Light text */
 }
 
 .publication-item p strong,
 .experience-item p strong,
 .education-item p strong,
 .conference-item p strong {
-    color: var(--heading-color); /* Make strong text light grey */
+    color: var(--heading-light); /* Make strong text near white */
 }
 
 .experience-item ul {
@@ -430,7 +440,7 @@ nav ul li a.active::after {
     margin-left: 25px;
     padding-left: 10px;
     font-size: 0.95em;
-    color: var(--dark-grey); /* Lighter grey list items */
+    color: var(--text-light);
 }
 
 .experience-item ul li {
@@ -439,7 +449,7 @@ nav ul li a.active::after {
 
 /* Styling for Teaching Experience Section */
 #teaching-experience {
-    background-color: #1a1a1a; /* Deep charcoal for this section */
+    background: linear-gradient(135deg, var(--bg-dark-primary) 0%, var(--bg-dark-secondary) 100%); /* Subtle gradient */
 }
 
 .teaching-experience-grid {
@@ -458,27 +468,27 @@ nav ul li a.active::after {
 }
 
 .teaching-role {
-    background-color: var(--secondary-color); /* Darker card background */
+    background-color: var(--bg-dark-tertiary); /* Dark card background */
     padding: 35px;
     border-radius: 10px;
     box-shadow: var(--shadow-light);
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    transition: box-shadow 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-bottom: 4px solid var(--accent-color); /* Accent green border at bottom */
+    border-bottom: 4px solid var(--green-accent); /* Accent green border at bottom */
 }
 
 .teaching-role:hover {
     box-shadow: var(--shadow-medium);
     transform: translateY(-5px);
-    border-color: var(--primary-color); /* Change border color to main green on hover */
+    border-color: var(--green-primary); /* Change border color to main green on hover */
 }
 
 .teaching-role h3 {
     font-size: 1.8em;
-    color: var(--primary-color); /* Green role titles */
+    color: var(--green-primary); /* Green role titles */
     margin-bottom: 25px;
     position: relative;
 }
@@ -488,7 +498,7 @@ nav ul li a.active::after {
     position: absolute;
     width: 50px;
     height: 2px;
-    background-color: var(--primary-color);
+    background-color: var(--green-primary);
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
@@ -503,40 +513,41 @@ nav ul li a.active::after {
 
 .teaching-role th,
 .teaching-role td {
-    border: 1px solid var(--border-color); /* Darker border for cells */
+    border: 1px solid var(--border-dark); /* Darker border for cells */
     padding: 15px;
     text-align: center;
     font-size: 0.98em;
     word-wrap: break-word;
+    color: var(--text-light); /* Ensure table text is light */
 }
 
 .teaching-role th {
-    background-color: var(--primary-color); /* Green table headers */
+    background-color: var(--green-primary); /* Green table headers */
     color: var(--white); /* White text on green headers */
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.7px;
-    border-color: var(--primary-dark); /* Darker green border for header */
+    border-color: var(--green-dark); /* Darker green border for header */
 }
 
 .teaching-role tbody tr {
-    background-color: var(--light-grey); /* Darker background for rows */
+    background-color: var(--bg-dark-secondary); /* Darker background for rows */
 }
 .teaching-role tbody tr:nth-child(even) {
-    background-color: #383838; /* Slightly different dark shade for even rows */
+    background-color: var(--bg-dark-primary); /* Even rows use primary dark background */
 }
 
 .teaching-role tbody tr:hover {
-    background-color: #4a4a4a; /* Lighter dark shade on hover for rows */
+    background-color: #3f445f; /* Slightly lighter dark shade on hover for rows */
 }
 
 
 /* Styling for Conferences Attended Section */
 #conferences {
-    background-color: #1a1a1a; /* Deep charcoal */
+    background: linear-gradient(135deg, var(--bg-dark-secondary) 0%, var(--bg-dark-primary) 100%); /* Subtle gradient */
 }
 
-/* .conference-item already styled by general item styling (uses --secondary-color for background) */
+/* .conference-item already styled by general item styling (uses --bg-dark-tertiary for background) */
 
 .conference-images {
     display: flex;
@@ -552,16 +563,18 @@ nav ul li a.active::after {
     border-radius: 8px;
     box-shadow: var(--shadow-light);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-dark); /* Subtle border for images */
 }
 
 .conference-images img:hover {
     transform: scale(1.03);
     box-shadow: var(--shadow-medium);
+    border-color: var(--green-primary); /* Green border on hover */
 }
 
 /* Contact Section */
 #contact {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); /* Green gradient background */
+    background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-dark) 100%); /* Green gradient background */
     color: var(--white);
     text-align: center;
     padding: 100px 0;
@@ -569,10 +582,11 @@ nav ul li a.active::after {
 
 #contact h2 {
     color: var(--white); /* White heading for green background */
+    text-shadow: 0 0 10px rgba(255,255,255,0.3); /* Subtle white glow for heading */
 }
 
 #contact p {
-    color: rgba(255,255,255,0.9); /* Lighter text for green background */
+    color: rgba(255,255,255,0.9);
     font-size: 1.1em;
     max-width: 700px;
     margin: 0 auto 50px auto;
@@ -584,31 +598,31 @@ nav ul li a.active::after {
     display: flex;
     flex-direction: column;
     gap: 25px;
-    background-color: var(--secondary-color); /* Darker form background */
+    background-color: var(--bg-dark-tertiary); /* Dark form background */
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4); /* Stronger shadow for form */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
     padding: 18px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-dark);
     border-radius: 8px;
     font-family: var(--font-sans);
     font-size: 1.05em;
-    color: var(--text-color); /* Light text in inputs */
-    background-color: var(--light-grey); /* Darker background for inputs */
+    color: var(--text-light); /* Light text in inputs */
+    background-color: var(--bg-dark-secondary); /* Darker background for inputs */
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    border-color: var(--primary-color); /* Green border on focus */
-    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.25); /* Green focus ring */
+    border-color: var(--green-primary); /* Green border on focus */
+    box-shadow: 0 0 0 4px rgba(0,230,118,0.25); /* Green focus ring */
     outline: none;
-    background-color: #4a4a4a; /* Slightly lighter dark background on focus */
+    background-color: #3f445f; /* Slightly lighter dark background on focus */
 }
 
 .contact-form textarea {
@@ -633,17 +647,18 @@ nav ul li a.active::after {
     text-decoration: underline;
 }
 .contact-info a:hover {
-    color: var(--accent-color); /* Accent green on hover */
+    color: var(--green-accent); /* Accent green on hover */
 }
 
 /* Footer */
 footer {
-    background-color: #0d0d0d; /* Near black footer */
+    background-color: var(--bg-dark-primary); /* Deep dark background */
     color: var(--white);
     padding: 50px 0;
     text-align: center;
     font-size: 0.95em;
     letter-spacing: 0.2px;
+    border-top: 1px solid var(--border-dark);
 }
 
 footer p {
@@ -652,7 +667,7 @@ footer p {
 }
 
 footer i {
-    color: var(--accent-color); /* Accent green heart */
+    color: var(--green-accent); /* Accent green heart */
     margin: 0 6px;
     font-size: 1.1em;
 }
