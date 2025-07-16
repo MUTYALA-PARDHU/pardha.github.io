@@ -51,7 +51,7 @@ h2 {
     text-align: center;
     margin-bottom: 50px; /* This creates space below the heading */
     position: unset; /* Ensure no relative positioning that could affect ::after */
-    border-bottom: none !important; /* NEW: Explicitly remove any border-bottom */
+    border-bottom: none !important; /* Explicitly remove any border-bottom */
 }
 
 h2::after {
@@ -217,7 +217,7 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     background-color: var(--light-grey);
 }
 
-/* Skills & Subjects of Interest Section - REVISED STYLING */
+/* Skills & Subjects of Interest Section */
 .skills-interests-section {
     background-color: var(--white); /* Ensure section background is white */
     overflow: hidden; /* Clear floats or manage layout */
@@ -282,7 +282,7 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     line-height: 1;
 }
 
-/* Publications & Experience Section */
+/* Publications & Experience Section (general item styling) */
 #publications, #experience {
     background-color: var(--white);
 }
@@ -298,7 +298,7 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     border-radius: 5px;
 }
 
-/* NEW: Styles for the container of all education items */
+/* Styles for the container of all education items */
 .education-list {
     display: grid;
     grid-template-columns: 1fr; /* Ensures items stack vertically on all screens */
@@ -310,7 +310,7 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
 /* Unified styling for education, publication, and experience items */
 .publication-item,
 .experience-item,
-.education-item { /* <-- This now includes .education-item */
+.education-item {
     background-color: var(--light-grey); /* Using light-grey for item background */
     padding: 25px;
     border-radius: 8px;
@@ -321,14 +321,14 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
 /* Unified hover effect */
 .publication-item:hover,
 .experience-item:hover,
-.education-item:hover { /* <-- This now includes .education-item:hover */
+.education-item:hover {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 /* Unified h3 styling for these items */
 .publication-item h3,
 .experience-item h3,
-.education-item h3 { /* <-- This now includes .education-item h3 */
+.education-item h3 {
     margin-top: 0;
     font-size: 1.4em;
     color: var(--primary-color);
@@ -338,7 +338,7 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
 /* Unified paragraph styling for these items */
 .publication-item p,
 .experience-item p,
-.education-item p { /* <-- This now includes .education-item p */
+.education-item p {
     margin-bottom: 5px;
     font-size: 0.95em;
     color: var(--dark-grey);
@@ -353,6 +353,74 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
 
 .experience-item ul li {
     margin-bottom: 5px;
+}
+
+/* NEW: Styling for Teaching Experience Section */
+#teaching-experience {
+    background-color: var(--light-grey); /* Or choose another background color */
+}
+
+.teaching-experience-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column on small screens */
+    gap: 40px; /* Space between the two teaching roles */
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+}
+
+@media (min-width: 768px) {
+    .teaching-experience-grid {
+        grid-template-columns: 1fr 1fr; /* Two columns on larger screens */
+    }
+}
+
+.teaching-role {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.teaching-role:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.teaching-role h3 {
+    font-size: 1.6em;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.teaching-role table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.teaching-role th,
+.teaching-role td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 0.95em;
+}
+
+.teaching-role th {
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.teaching-role tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.teaching-role tbody tr:hover {
+    background-color: #e9e9e9;
 }
 
 /* Contact Section */
@@ -417,7 +485,7 @@ footer i {
         font-size: 2em;
         margin-bottom: 30px;
         position: unset; /* Ensure no relative positioning that could affect ::after */
-        border-bottom: none !important; /* NEW: Explicitly remove any border-bottom on mobile */
+        border-bottom: none !important; /* Explicitly remove any border-bottom on mobile */
     }
     h2::after { /* Also apply forcefully on mobile if needed */
         content: none !important;
