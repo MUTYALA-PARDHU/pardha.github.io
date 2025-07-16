@@ -45,14 +45,19 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
+/* IMPORTANT: This rule ensures no ::after pseudo-element AND no border-bottom for any h2 by default */
 h2 {
     font-size: 2.5em;
     text-align: center;
     margin-bottom: 50px; /* This creates space below the heading */
-    /* No position: relative; or pseudo-elements for general h2 */
+    position: unset; /* Ensure no relative positioning that could affect ::after */
+    border-bottom: none !important; /* NEW: Explicitly remove any border-bottom */
 }
 
-/* No h2::after rule here, as requested */
+h2::after {
+    content: none !important; /* Forcefully remove any ::after content */
+    display: none !important; /* Forcefully hide any ::after element */
+}
 
 
 a {
@@ -132,6 +137,8 @@ nav ul li a::after {
     bottom: -5px;
     left: 0;
     transition: width 0.3s ease;
+    /* Ensure it's displayed for nav links, overriding the general h2::after */
+    display: block !important;
 }
 
 nav ul li a:hover::after,
@@ -170,14 +177,8 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     font-size: 3.5em;
     margin-bottom: 10px;
     color: var(--primary-color);
-    /* Ensure no pseudo-element or border-bottom is causing an underline here */
-    position: unset; /* Override any potential 'position: relative' from general h2 */
+    /* No specific ::after override needed here if general h2::after handles it */
 }
-/* Explicitly ensure no pseudo-element on hero h2 */
-.hero-section h2::after {
-    content: none;
-}
-
 
 .hero-section h3 {
     font-size: 1.8em;
@@ -415,18 +416,19 @@ footer i {
     h2 {
         font-size: 2em;
         margin-bottom: 30px;
+        position: unset; /* Ensure no relative positioning that could affect ::after */
+        border-bottom: none !important; /* NEW: Explicitly remove any border-bottom on mobile */
     }
+    h2::after { /* Also apply forcefully on mobile if needed */
+        content: none !important;
+        display: none !important;
+    }
+
 
     .hero-section h2 {
         font-size: 2.5em;
-        /* Ensure no pseudo-element or border-bottom is causing an underline here on mobile */
-        position: unset; /* Override any potential 'position: relative' from general h2 */
+        /* No specific ::after override needed here if general h2::after handles it */
     }
-    /* Explicitly ensure no pseudo-element on hero h2 on mobile */
-    .hero-section h2::after {
-        content: none;
-    }
-
 
     .hero-section h3 {
         font-size: 1.4em;
