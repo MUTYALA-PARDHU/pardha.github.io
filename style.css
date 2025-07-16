@@ -70,7 +70,6 @@ a {
     transition: color 0.3s ease;
 }
 
-/* Original rule for a:hover had a comment. Let's keep the explicit color */
 a:hover {
     color: #004085; /* A slightly darker blue */
 }
@@ -196,21 +195,14 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
 
 .social-links {
     margin-top: 20px;
-    /* --- NEW/MODIFIED STYLES FOR SOCIAL LINKS LAYOUT --- */
     display: flex; /* Use flexbox for spacing */
     justify-content: center; /* Center the icons */
     gap: 25px; /* Add space between icons */
-    /* Removed margin from individual 'a' tags below as gap is better */
-    /* -------------------------------------------------- */
 }
 
 .social-links a {
     display: inline-block;
-    /* --- MODIFIED: Increased font-size for larger icons --- */
     font-size: 2.5em; /* This is the key change for icon size */
-    /* Removed margin as 'gap' on parent is now handling spacing */
-    /* margin: 0 15px; */
-    /* -------------------------------------------------- */
     color: var(--primary-color);
     transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -280,29 +272,53 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     border-radius: 5px;
 }
 
-.publication-item, .experience-item {
-    background-color: var(--light-grey);
+/* NEW: Styles for the container of all education items */
+.education-list {
+    display: grid;
+    grid-template-columns: 1fr; /* Ensures items stack vertically on all screens */
+    gap: 30px; /* Space between each education item */
+    max-width: 800px; /* Constrain width for readability */
+    margin: 40px auto 0 auto; /* Center the list and add space from heading */
+}
+
+/* Unified styling for education, publication, and experience items */
+.publication-item,
+.experience-item,
+.education-item { /* <-- This now includes .education-item */
+    background-color: var(--light-grey); /* Using light-grey for item background */
     padding: 25px;
-    margin-bottom: 25px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     transition: box-shadow 0.3s ease;
 }
 
-.publication-item:hover, .experience-item:hover {
+/* Unified hover effect */
+.publication-item:hover,
+.experience-item:hover,
+.education-item:hover { /* <-- This now includes .education-item:hover */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.publication-item h3, .experience-item h3 {
+/* Unified h3 styling for these items */
+.publication-item h3,
+.experience-item h3,
+.education-item h3 { /* <-- This now includes .education-item h3 */
     margin-top: 0;
     font-size: 1.4em;
     color: var(--primary-color);
+    margin-bottom: 5px;
 }
 
-.publication-item p, .experience-item p {
-    margin-bottom: 10px;
+/* Unified paragraph styling for these items */
+.publication-item p,
+.experience-item p,
+.education-item p { /* <-- This now includes .education-item p */
+    margin-bottom: 5px;
+    font-size: 0.95em;
+    color: var(--dark-grey);
 }
 
+/* Specific styling for unordered lists within experience items (if any) */
 .experience-item ul {
     list-style-type: disc;
     margin-left: 20px;
@@ -422,11 +438,7 @@ footer i {
     }
 
     .social-links a {
-        /* --- MODIFIED for smaller screens --- */
         font-size: 2em; /* Slightly smaller on very small screens, still readable */
-        /* Removed margin here too */
-        /* margin: 0 10px; */
-        /* ------------------------------------ */
     }
 
     .contact-form {
