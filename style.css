@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 h2 {
     font-size: 2.5em;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 50px; /* This creates space below the heading */
     position: relative;
 }
 
@@ -217,41 +217,19 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     background-color: var(--light-grey);
 }
 
-/* Skills & Subjects of Interest Section - SIMPLIFIED STYLING */
+/* Skills & Subjects of Interest Section - REVISED STYLING */
 .skills-interests-section {
-    /* section-padding class will handle padding */
     background-color: var(--white); /* Ensure section background is white */
     overflow: hidden; /* Clear floats or manage layout */
 }
 
-/* This container is now primarily for centering and width constraint, not background */
-.skills-interests-heading-container {
-    /* No specific background or padding needed here anymore */
-    text-align: center;
-    /* The h2 will inherit the default h2 styling from above, including margin-bottom */
-}
-
-/* The h2 within this section will use the general h2 rules */
+/* The h2 within this section (with class skills-interests-heading)
+   should inherit the standard h2 styles.
+   We remove specific overrides here to allow it to function like other h2s. */
 .skills-interests-heading {
-    /* This rule is kept just in case you want to override the general h2 for this specific heading later,
-       but currently it simply inherits, ensuring consistency. */
-    /* You could remove this if you truly want it to be identical to other h2s */
-    /* For now, ensuring it uses default h2 styles. */
+    /* No specific styles needed here, as it should just be a regular h2 */
+    /* It will get its font-size, text-align, margin-bottom, position, and ::after from the general h2 rule. */
 }
-
-/* The :after pseudo-element for the underline on the h2 */
-.skills-interests-heading::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background-color: var(--primary-color);
-    border-radius: 2px;
-}
-
 
 .skills-interests-content {
     background-color: var(--white); /* White background for the content area */
@@ -261,7 +239,8 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     justify-content: center; /* Center the columns */
     gap: 80px; /* Space between the two columns */
     flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
-    margin-top: 20px; /* Add some space below the main heading and before columns start */
+    /* Remove margin-top here if the h2's margin-bottom is sufficient */
+    /* margin-top: 20px; */ /* Removed as h2 margin-bottom should create enough space */
 }
 
 .skills-column,
@@ -471,7 +450,7 @@ footer i {
 
     /* Responsive adjustments for Skills & Subjects of Interest */
     .skills-interests-heading {
-        font-size: 2.2em;
+        font-size: 2.2em; /* Keep responsive font size if desired */
     }
 
     .skills-interests-content {
