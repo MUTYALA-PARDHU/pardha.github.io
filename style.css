@@ -49,20 +49,12 @@ h2 {
     font-size: 2.5em;
     text-align: center;
     margin-bottom: 50px; /* This creates space below the heading */
-    position: relative;
+    /* Removed 'position: relative;' as it's only needed for pseudo-elements */
+    /* if no pseudo-element relies on it, it can be removed for cleaner CSS */
 }
 
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background-color: var(--primary-color);
-    border-radius: 2px;
-}
+/* REMOVED: h2::after { ... } - This was the rule creating the underlines */
+
 
 a {
     color: var(--primary-color);
@@ -223,13 +215,12 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     overflow: hidden; /* Clear floats or manage layout */
 }
 
-/* The h2 within this section (with class skills-interests-heading)
-   should inherit the standard h2 styles.
-   We remove specific overrides here to allow it to function like other h2s. */
 .skills-interests-heading {
     /* No specific styles needed here, as it should just be a regular h2 */
     /* It will get its font-size, text-align, margin-bottom, position, and ::after from the general h2 rule. */
+    /* Since we removed the general h2::after, this heading will also not have an underline. */
 }
+
 
 .skills-interests-content {
     background-color: var(--white); /* White background for the content area */
@@ -239,8 +230,6 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     justify-content: center; /* Center the columns */
     gap: 80px; /* Space between the two columns */
     flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
-    /* Remove margin-top here if the h2's margin-bottom is sufficient */
-    /* margin-top: 20px; */ /* Removed as h2 margin-bottom should create enough space */
 }
 
 .skills-column,
