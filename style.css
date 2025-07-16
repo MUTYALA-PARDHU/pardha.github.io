@@ -282,7 +282,7 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     line-height: 1;
 }
 
-/* Publications & Experience Section (general item styling) */
+/* Publications & Education Section (general item styling) */
 #publications, #experience {
     background-color: var(--white);
 }
@@ -307,7 +307,7 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     margin: 40px auto 0 auto; /* Center the list and add space from heading */
 }
 
-/* Unified styling for education, publication, and experience items */
+/* Unified styling for education, publication, and teaching experience items */
 .publication-item,
 .experience-item,
 .education-item {
@@ -355,9 +355,10 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     margin-bottom: 5px;
 }
 
-/* NEW: Styling for Teaching Experience Section */
+
+/* Styling for Teaching Experience Section - REFINED */
 #teaching-experience {
-    background-color: var(--light-grey); /* Or choose another background color */
+    background-color: var(--light-grey); /* Section background */
 }
 
 .teaching-experience-grid {
@@ -365,21 +366,25 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     grid-template-columns: 1fr; /* Default to single column on small screens */
     gap: 40px; /* Space between the two teaching roles */
     max-width: 900px;
-    margin: 40px auto 0 auto;
+    margin: 40px auto 0 auto; /* Center the grid and add space from heading */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) { /* Two columns on larger screens */
     .teaching-experience-grid {
-        grid-template-columns: 1fr 1fr; /* Two columns on larger screens */
+        grid-template-columns: 1fr 1fr;
     }
 }
 
 .teaching-role {
-    background-color: var(--white);
+    background-color: var(--white); /* White background for individual role cards */
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     transition: box-shadow 0.3s ease;
+    display: flex; /* Use flex to align content within the card */
+    flex-direction: column;
+    align-items: center; /* Center table horizontally within the card */
+    text-align: center; /* Center h3 */
 }
 
 .teaching-role:hover {
@@ -390,21 +395,23 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     font-size: 1.6em;
     color: var(--primary-color);
     margin-bottom: 25px;
-    text-align: center;
+    /* text-align: center; -- Already set by parent .teaching-role */
 }
 
 .teaching-role table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
+    table-layout: fixed; /* Ensures columns are of equal width or as defined */
 }
 
 .teaching-role th,
 .teaching-role td {
     border: 1px solid #ddd;
     padding: 12px;
-    text-align: left;
+    text-align: left; /* Left align text in table cells */
     font-size: 0.95em;
+    word-wrap: break-word; /* Prevent long words from overflowing */
 }
 
 .teaching-role th {
@@ -413,6 +420,7 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-align: center; /* Center table headers */
 }
 
 .teaching-role tbody tr:nth-child(even) {
@@ -422,6 +430,7 @@ nav ul li a.active::after { /* Add 'active' class via JS for current section */
 .teaching-role tbody tr:hover {
     background-color: #e9e9e9;
 }
+
 
 /* Contact Section */
 #contact {
