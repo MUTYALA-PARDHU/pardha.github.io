@@ -792,6 +792,8 @@ footer i {
     h2 {
         font-size: 2em;
         margin-bottom: 40px;
+        /* --- CHANGE: Added margin-top for h2 on mobile for more space above --- */
+        margin-top: 40px; 
     }
     .hero-section {
         min-height: 65vh;
@@ -843,9 +845,9 @@ footer i {
         visibility: hidden;
         transform: translateY(-20px);
         pointer-events: none; /* Disable interaction when hidden */
-        /* --- CHANGE: Increased z-index to ensure it overlays content --- */
-        z-index: 999;
-        transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out, z-index 0s step-end; /* Added z-index to transition for immediate effect */
+        /* --- CHANGE: Increased z-index significantly for mobile nav --- */
+        z-index: 1050; /* Ensure it's above everything else */
+        transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out, z-index 0.3s linear; /* Added z-index to transition for immediate effect */
     }
 
     .nav-links.active { /* Class added by JS when menu is open */
@@ -853,8 +855,8 @@ footer i {
         visibility: visible;
         transform: translateY(0);
         pointer-events: auto; /* Enable interaction when visible */
-        z-index: 999; /* Ensure it stays above content when active */
-        transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out, z-index 0s step-start; /* Added z-index to transition */
+        /* --- CHANGE: Ensure z-index remains high when active --- */
+        z-index: 1050; /* Needs to stay high when visible */
     }
 
     .nav-links li {
@@ -868,11 +870,13 @@ footer i {
 
     .menu-toggle {
         display: flex; /* Show hamburger on mobile */
+        /* --- CHANGE: Increased z-index for menu toggle to ensure it's clickable --- */
+        z-index: 1051; /* Make sure the toggle is above the menu itself */
     }
 
     /* --- CHANGE: Increased section-padding for better spacing on mobile --- */
     .section-padding {
-        padding: 80px 0; /* Increased from 60px */
+        padding: 100px 0; /* Increased from 80px */
     }
     .skills-interests-content {
         flex-direction: column;
@@ -1013,6 +1017,8 @@ footer i {
     h2 {
         font-size: 1.8em;
         margin-bottom: 30px;
+        /* --- CHANGE: Added margin-top for h2 on extra small screens --- */
+        margin-top: 30px;
     }
     .skills-column h3,
     .subjects-column h3 {
