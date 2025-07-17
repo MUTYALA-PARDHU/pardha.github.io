@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // -----------------------------------------------------------
-    // 1. Hamburger Menu Toggle Logic (Re-implemented)
+    // 1. Hamburger Menu Toggle Logic (Re-implemented and fixed scroll)
     // -----------------------------------------------------------
     const mobileMenu = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
@@ -13,9 +13,25 @@ document.addEventListener('DOMContentLoaded', () => {
             body.classList.toggle('no-scroll'); // Prevent body scroll when menu is open
         });
 
-        // Close menu when a navigation link is clicked (for smoother UX)
+        // Close menu AND scroll to section when a navigation link is clicked (for smoother UX)
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
+                // Prevent default anchor click behavior to handle smooth scroll manually
+                e.preventDefault();
+
+                // Get the target section's ID from the href (e.g., "#about")
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                if (targetSection) {
+                    // Scroll to the target section smoothly
+                    window.scrollTo({
+                        top: targetSection.offsetTop - (document.querySelector('header').offsetHeight || 0), // Adjust for sticky header height
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Close the mobile menu after clicking a link
                 navLinks.classList.remove('active');
                 mobileMenu.classList.remove('active');
                 body.classList.remove('no-scroll');
