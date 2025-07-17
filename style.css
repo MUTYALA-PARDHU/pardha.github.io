@@ -38,7 +38,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Utility class to prevent body scrolling for mobile menu */
+/* Utility class to prevent body scrolling for mobile menu (no longer strictly needed but harmless) */
 body.no-scroll {
     overflow: hidden;
 }
@@ -128,7 +128,7 @@ header {
 
 header .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center logo when no nav links */
     align-items: center;
 }
 
@@ -140,72 +140,10 @@ header .container {
     text-shadow: 0 0 5px rgba(0,230,118,0.3); /* Subtle glow for logo */
 }
 
-.nav-links { /* Targeted ul with this class */
-    list-style: none;
-    display: flex;
-}
-
-.nav-links li {
-    margin-left: 35px;
-}
-
-.nav-links li a {
-    font-weight: 500;
-    color: var(--text-light); /* Light text for nav links */
-    position: relative;
-    padding-bottom: 8px;
-    font-size: 1.05em;
-}
-
-.nav-links li a::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 3px;
-    background-color: var(--green-primary); /* Green underline */
-    bottom: 0px;
-    left: 0;
-    transition: width 0.3s ease-out;
-    display: block !important;
-}
-
-.nav-links li a:hover::after,
-.nav-links li a.active::after {
-    width: 100%;
-}
-
-/* Hamburger Menu Styles */
-.menu-toggle {
-    display: none; /* Hidden by default for desktop */
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-    /* --- NEW/CHANGE: Explicitly set cursor to pointer --- */
-    cursor: pointer;
-    /* --- NEW/CHANGE: Max z-index to ensure it's on top of everything --- */
-    z-index: 99999;
-}
-
-.menu-toggle .bar {
-    width: 100%;
-    height: 3px;
-    background-color: var(--green-primary);
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-/* State for open menu */
-.menu-toggle.is-active .bar:nth-child(2) {
-    opacity: 0; /* Hide middle bar */
-}
-
-.menu-toggle.is-active .bar:nth-child(1) {
-    transform: translateY(8.5px) rotate(45deg);
-}
-
-.menu-toggle.is-active .bar:nth-child(3) {
-    transform: translateY(-8.5px) rotate(-45deg);
+/* --- REMOVED: .nav-links li, .nav-links li a styles for desktop as navigation is removed --- */
+/* --- NEW: Hide navigation links and menu toggle for all screen sizes --- */
+.nav-links, .menu-toggle {
+    display: none !important;
 }
 
 
@@ -749,7 +687,7 @@ footer i {
 }
 
 
-/* Responsive Design */
+/* Responsive Design - simplified for no navigation */
 @media (max-width: 992px) {
     .container {
         padding: 0 20px;
@@ -778,9 +716,6 @@ footer i {
         width: 180px;
         height: 180px;
     }
-    nav ul li {
-        margin-left: 25px;
-    }
     .skills-interests-content {
         gap: 60px;
     }
@@ -792,8 +727,8 @@ footer i {
 
 @media (max-width: 768px) {
     header {
-        overflow: visible; /* Ensure header doesn't clip children */
-        position: fixed; /* --- NEW/CHANGE: Make header fixed on mobile --- */
+        overflow: visible;
+        position: fixed;
         width: 100%;
     }
 
@@ -805,7 +740,6 @@ footer i {
     .hero-section {
         min-height: 65vh;
         padding: 80px 0;
-        /* --- NEW/CHANGE: Add top padding to hero to prevent content from going under fixed header --- */
         padding-top: 100px; /* Adjust based on your header's actual height */
     }
     .hero-section h2 {
@@ -830,69 +764,15 @@ footer i {
         gap: 20px;
     }
     header .container {
-        flex-direction: row; /* Keep logo and hamburger on same row */
-        justify-content: space-between; /* Space between logo and menu icon */
-        align-items: center;
+        justify-content: center; /* Center logo on mobile too */
         padding: 15px 20px;
     }
     .logo {
-        margin-bottom: 0; /* No margin below logo on mobile */
-    }
-
-    /* Mobile specific overrides for nav links */
-    .nav-links {
-        position: absolute;
-        top: 80px; /* Adjust based on your header height */
-        left: 0;
-        width: 100%;
-        height: calc(100vh - 80px); /* --- NEW/CHANGE: Make menu take full height below header --- */
-        background-color: var(--bg-dark-primary); /* Same as header or slightly different */
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 0;
-        border-top: 1px solid var(--border-dark);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-20px);
-        /* --- NEW/CHANGE: Ensure pointer-events are disabled when hidden --- */
-        pointer-events: none;
-        /* --- NEW/CHANGE: Max z-index to be absolutely sure it's on top when active --- */
-        z-index: 99998;
-        transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out;
-        /* --- NEW/CHANGE: Added overflow-y to allow scrolling if menu items exceed screen height --- */
-        overflow-y: auto;
-    }
-
-    .nav-links.active { /* Class added by JS when menu is open */
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        /* --- NEW/CHANGE: Explicitly enable pointer-events when active --- */
-        pointer-events: auto;
-        /* --- NEW/CHANGE: Keep high z-index when active --- */
-        z-index: 99998;
-    }
-
-    .nav-links li {
-        margin: 10px 0; /* Adjust vertical spacing */
-        width: 100%; /* Make list items take full width for better touch targets */
-        text-align: center;
-    }
-
-    .nav-links li a {
-        font-size: 1.1em;
-        padding: 15px 0; /* Increased padding for touch targets */
-        display: block; /* Make the whole area clickable */
-    }
-
-    .menu-toggle {
-        display: flex; /* Show hamburger on mobile */
-        /* --- NEW/CHANGE: Highest z-index for the toggle itself --- */
-        z-index: 99999;
+        margin-bottom: 0;
     }
 
     .section-padding {
-        padding: 100px 0; /* Increased to ensure enough space */
+        padding: 100px 0;
     }
     .skills-interests-content {
         flex-direction: column;
@@ -936,53 +816,52 @@ footer i {
     .teaching-role th,
     .teaching-role td,
     .teaching-role tr {
-        display: block; /* Make all table elements behave as blocks */
+        display: block;
     }
 
     .teaching-role thead tr {
         position: absolute;
-        top: -9999px; /* Hide table headers visually but keep for screen readers */
+        top: -9999px;
         left: -9999px;
     }
 
     .teaching-role tr {
         margin-bottom: 15px;
-        border: 1px solid var(--border-dark); /* Add border to each row as a card */
+        border: 1px solid var(--border-dark);
         border-radius: 8px;
-        background-color: var(--bg-dark-secondary); /* Background for each stacked row */
+        background-color: var(--bg-dark-secondary);
         padding: 10px;
     }
     .teaching-role tr:nth-child(even) {
-        background-color: var(--bg-dark-tertiary); /* Alternate row background */
+        background-color: var(--bg-dark-tertiary);
     }
 
     .teaching-role td {
-        border: none; /* Remove individual cell borders */
-        border-bottom: 1px solid var(--border-dark); /* Add border between key-value pairs */
+        border: none;
+        border-bottom: 1px solid var(--border-dark);
         position: relative;
-        padding-left: 50%; /* Make space for the pseudo-element label */
-        text-align: right; /* Align value to the right */
+        padding-left: 50%;
+        text-align: right;
         font-size: 0.95em;
-        padding-top: 8px; /* Reduce padding to make it compact */
+        padding-top: 8px;
         padding-bottom: 8px;
     }
 
     .teaching-role td:last-child {
-        border-bottom: 0; /* No border for the last item in the stack */
+        border-bottom: 0;
     }
 
-    /* Generate labels from table headers using data attributes */
     .teaching-role td::before {
-        content: attr(data-label); /* Use data-label attribute to display header */
+        content: attr(data-label);
         position: absolute;
         left: 10px;
-        width: calc(50% - 20px); /* Adjust width to fit */
+        width: calc(50% - 20px);
         padding-right: 10px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         font-weight: 600;
-        color: var(--green-accent); /* Make labels stand out */
+        color: var(--green-accent);
         text-align: left;
     }
 
