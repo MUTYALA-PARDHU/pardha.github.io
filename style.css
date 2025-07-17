@@ -255,7 +255,8 @@ header .container {
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 40px;
+    /* --- CHANGE: Centered the image --- */
+    margin: 0 auto 40px auto; /* Centered horizontally, kept bottom margin */
     border: 6px solid var(--green-primary); /* Green border */
     box-shadow: 0 0 0 10px rgba(0,230,118,0.25), 0 0 25px rgba(0,230,118,0.4); /* Prominent green glow */
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -506,17 +507,6 @@ header .container {
     margin: 60px auto 0 auto;
 }
 
-/* Table Responsiveness for Teaching Role */
-.teaching-role table {
-    display: block; /* Make table behave like a block element */
-    width: 100%;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    white-space: nowrap; /* Prevent content from wrapping inside cells if desired */
-    border-collapse: collapse; /* Ensure borders are collapsed */
-}
-
-
 .teaching-role {
     background-color: var(--bg-dark-tertiary); /* Dark card background */
     padding: 35px;
@@ -554,13 +544,19 @@ header .container {
     transform: translateX(-50%);
 }
 
+/* --- CHANGE: Enhanced Table Responsiveness for Teaching Role --- */
+.teaching-role table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Add some space below heading */
+}
+
 .teaching-role th,
 .teaching-role td {
     border: 1px solid var(--border-dark); /* Darker border for cells */
     padding: 15px;
     text-align: center;
     font-size: 0.98em;
-    word-wrap: break-word;
     color: var(--text-light); /* Ensure table text is light */
 }
 
@@ -908,12 +904,71 @@ footer i {
     .teaching-role h3 {
         font-size: 1.6em;
     }
+
+    /* --- CHANGE: Table to Stack for Mobile --- */
+    .teaching-role table,
+    .teaching-role thead,
+    .teaching-role tbody,
     .teaching-role th,
-    .teaching-role td {
-        padding: 10px;
-        font-size: 0.9em;
-        min-width: 120px; /* Helps with table scrolling */
+    .teaching-role td,
+    .teaching-role tr {
+        display: block; /* Make all table elements behave as blocks */
     }
+
+    .teaching-role thead tr {
+        position: absolute;
+        top: -9999px; /* Hide table headers visually but keep for screen readers */
+        left: -9999px;
+    }
+
+    .teaching-role tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--border-dark); /* Add border to each row as a card */
+        border-radius: 8px;
+        background-color: var(--bg-dark-secondary); /* Background for each stacked row */
+        padding: 10px;
+    }
+    .teaching-role tr:nth-child(even) {
+        background-color: var(--bg-dark-tertiary); /* Alternate row background */
+    }
+
+    .teaching-role td {
+        border: none; /* Remove individual cell borders */
+        border-bottom: 1px solid var(--border-dark); /* Add border between key-value pairs */
+        position: relative;
+        padding-left: 50%; /* Make space for the pseudo-element label */
+        text-align: right; /* Align value to the right */
+        font-size: 0.95em;
+        padding-top: 8px; /* Reduce padding to make it compact */
+        padding-bottom: 8px;
+    }
+
+    .teaching-role td:last-child {
+        border-bottom: 0; /* No border for the last item in the stack */
+    }
+
+    /* Generate labels from table headers using data attributes (or hardcode if simpler) */
+    .teaching-role td::before {
+        content: attr(data-label); /* Use data-label attribute to display header */
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px); /* Adjust width to fit */
+        padding-right: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 600;
+        color: var(--green-accent); /* Make labels stand out */
+        text-align: left;
+    }
+
+    /* Explicitly define data-labels in HTML for this to work perfectly.
+       If not, you can hardcode them here, e.g.,
+       .teaching-role td:nth-of-type(1)::before { content: "COURSE CODE:"; }
+       .teaching-role td:nth-of-type(2)::before { content: "COURSE NAME:"; }
+    */
+
+    /* Back to general styles */
     .conference-item {
         margin: 30px auto;
         padding: 25px;
@@ -978,11 +1033,14 @@ footer i {
     .teaching-role h3 {
         font-size: 1.4em;
     }
-    .teaching-role th,
+    /* Smaller padding for stacked table cells */
     .teaching-role td {
-        padding: 8px;
-        font-size: 0.85em;
-        min-width: 100px; /* Smaller min-width for very small screens */
+        padding-left: 45%;
+        font-size: 0.9em;
+    }
+    .teaching-role td::before {
+        width: calc(45% - 15px);
+        font-size: 0.9em;
     }
     .contact-form {
         padding: 20px;
