@@ -1,34 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // -----------------------------------------------------------
-    // 1. Active Navigation Link Highlighting
+    // 1. (Removed) Active Navigation Link Highlighting
+    //    This feature relies on navigation links, which are now hidden.
     // -----------------------------------------------------------
-    const sections = document.querySelectorAll('main section');
-    const navLinks = document.querySelectorAll('nav ul li a');
-
-    const highlightNavOnScroll = () => {
-        let current = '';
-        const headerHeight = document.querySelector('header').offsetHeight; // Get dynamic header height
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - headerHeight - 30; // Adjust offset for sticky header and buffer
-            const sectionBottom = sectionTop + section.offsetHeight;
-
-            if (pageYOffset >= sectionTop && pageYOffset < sectionBottom) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            // This condition needs to match the new section IDs
-            if (link.href.includes(current)) {
-                link.classList.add('active');
-            }
-        });
-    };
-
-    window.addEventListener('scroll', highlightNavOnScroll);
-    highlightNavOnScroll(); // Call on load to set initial active link
 
     // -----------------------------------------------------------
     // 2. Section Fade-in Animation on Scroll (Enhanced)
@@ -115,43 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -----------------------------------------------------------
-    // 5. Hamburger Menu Toggle Logic
+    // 5. (Removed) Hamburger Menu Toggle Logic
+    //    This functionality is now removed as the navigation bar is hidden.
     // -----------------------------------------------------------
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelector('.nav-links'); // Select the nav ul
-
-    if (mobileMenu && navLinks) {
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('is-active');
-            navLinks.classList.toggle('active');
-            // Toggle body overflow to prevent scrolling when menu is open
-            document.body.classList.toggle('no-scroll');
-        });
-
-        // Close menu when a nav link is clicked (for smooth scrolling)
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                // Check if the menu is active before closing
-                if (mobileMenu.classList.contains('is-active')) {
-                    mobileMenu.classList.remove('is-active');
-                    navLinks.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                }
-            });
-        });
-
-        // Close menu if window is resized above mobile breakpoint while menu is open
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                if (window.innerWidth > 768 && mobileMenu.classList.contains('is-active')) {
-                    mobileMenu.classList.remove('is-active');
-                    navLinks.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                }
-            }, 250); // Debounce resize event
-        });
-    }
-
 });
