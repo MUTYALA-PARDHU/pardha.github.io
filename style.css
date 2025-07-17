@@ -789,10 +789,14 @@ footer i {
 }
 
 @media (max-width: 768px) {
+    /* --- NEW/CHANGE: Ensured header doesn't hide content overflow --- */
+    header {
+        overflow: visible;
+    }
+
     h2 {
         font-size: 2em;
         margin-bottom: 40px;
-        /* --- CHANGE: Added margin-top for h2 on mobile for more space above --- */
         margin-top: 40px; 
     }
     .hero-section {
@@ -845,9 +849,9 @@ footer i {
         visibility: hidden;
         transform: translateY(-20px);
         pointer-events: none; /* Disable interaction when hidden */
-        /* --- CHANGE: Increased z-index significantly for mobile nav --- */
-        z-index: 1050; /* Ensure it's above everything else */
-        transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out, z-index 0.3s linear; /* Added z-index to transition for immediate effect */
+        /* --- CHANGE: Very High Z-index for mobile nav to prevent any overlay issues --- */
+        z-index: 9999;
+        transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out, z-index 0.3s linear;
     }
 
     .nav-links.active { /* Class added by JS when menu is open */
@@ -855,8 +859,8 @@ footer i {
         visibility: visible;
         transform: translateY(0);
         pointer-events: auto; /* Enable interaction when visible */
-        /* --- CHANGE: Ensure z-index remains high when active --- */
-        z-index: 1050; /* Needs to stay high when visible */
+        /* --- CHANGE: Ensure Z-index remains very high when active --- */
+        z-index: 9999;
     }
 
     .nav-links li {
@@ -870,13 +874,13 @@ footer i {
 
     .menu-toggle {
         display: flex; /* Show hamburger on mobile */
-        /* --- CHANGE: Increased z-index for menu toggle to ensure it's clickable --- */
-        z-index: 1051; /* Make sure the toggle is above the menu itself */
+        /* --- CHANGE: Very High Z-index for menu toggle to ensure it's clickable --- */
+        z-index: 10000; /* Highest z-index to guarantee clickability */
     }
 
     /* --- CHANGE: Increased section-padding for better spacing on mobile --- */
     .section-padding {
-        padding: 100px 0; /* Increased from 80px */
+        padding: 100px 0; /* Increased to ensure enough space */
     }
     .skills-interests-content {
         flex-direction: column;
@@ -1017,7 +1021,6 @@ footer i {
     h2 {
         font-size: 1.8em;
         margin-bottom: 30px;
-        /* --- CHANGE: Added margin-top for h2 on extra small screens --- */
         margin-top: 30px;
     }
     .skills-column h3,
