@@ -1,8 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
     // -----------------------------------------------------------
-    // 1. (Removed) Active Navigation Link Highlighting
-    //    This feature relies on navigation links, which are now hidden.
+    // 1. Hamburger Menu Toggle Logic (Re-implemented)
     // -----------------------------------------------------------
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body; // To disable body scroll
+
+    if (mobileMenu && navLinks) {
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active'); // Animate hamburger icon
+            body.classList.toggle('no-scroll'); // Prevent body scroll when menu is open
+        });
+
+        // Close menu when a navigation link is clicked (for smoother UX)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                body.classList.remove('no-scroll');
+            });
+        });
+    }
 
     // -----------------------------------------------------------
     // 2. Section Fade-in Animation on Scroll (Enhanced)
@@ -84,12 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Move hero content slightly faster (or just keep it normal for a stronger effect on image)
         if (heroContent) {
-             heroContent.style.transform = `translateY(${scrollPosition * 0.05}px)`;
+            heroContent.style.transform = `translateY(${scrollPosition * 0.05}px)`;
         }
     });
-
-    // -----------------------------------------------------------
-    // 5. (Removed) Hamburger Menu Toggle Logic
-    //    This functionality is now removed as the navigation bar is hidden.
-    // -----------------------------------------------------------
 });
