@@ -823,12 +823,12 @@ footer i {
         height: 100%;
         background-color: var(--bg-dark-primary); /* Full overlay background */
         flex-direction: column;
-        justify-content: center;
+        justify-content: center; /* Center items vertically */
         align-items: center;
         transform: translateX(100%); /* Start off-screen to the right */
         transition: transform 0.4s ease-in-out;
         z-index: 1050; /* Above header but below toggle */
-        padding: 80px 20px; /* Add padding for content */
+        padding-top: 100px; /* Added padding from the top for better spacing */
         overflow-y: auto; /* Enable scrolling for long menus */
     }
 
@@ -837,21 +837,31 @@ footer i {
     }
 
     .nav-links li {
-        margin: 20px 0; /* More vertical space for touch targets */
+        margin: 15px 0; /* Adjusted vertical space between links */
     }
 
     .nav-links li a {
-        font-size: 1.8em; /* Larger font for mobile links */
-        color: var(--heading-light); /* Make links more prominent */
+        font-size: 2.2em; /* Increased font size */
+        font-weight: 600; /* Made text bolder */
+        color: var(--heading-light); /* Ensure links are very visible */
         display: block; /* Make entire area clickable */
         width: fit-content;
         text-align: center;
         padding: 10px 0;
+        letter-spacing: 1px; /* Added letter spacing */
+        transition: color 0.3s ease, transform 0.2s ease; /* Smooth transition */
     }
 
     .nav-links li a::after {
         background-color: var(--green-accent); /* Use accent green for mobile underline */
         height: 3px;
+        /* Ensure existing transition for width is applied */
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+        color: var(--green-primary); /* Green on hover/active */
+        transform: scale(1.05); /* Slightly enlarge on hover/active */
     }
 
     h2 {
