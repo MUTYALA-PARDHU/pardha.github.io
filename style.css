@@ -181,8 +181,10 @@ header .container {
     justify-content: space-between;
     width: 30px;
     height: 20px;
+    /* --- NEW/CHANGE: Explicitly set cursor to pointer --- */
     cursor: pointer;
-    z-index: 1001; /* Above header */
+    /* --- NEW/CHANGE: Max z-index to ensure it's on top of everything --- */
+    z-index: 99999;
 }
 
 .menu-toggle .bar {
@@ -789,9 +791,10 @@ footer i {
 }
 
 @media (max-width: 768px) {
-    /* --- NEW/CHANGE: Ensured header doesn't hide content overflow --- */
     header {
-        overflow: visible;
+        overflow: visible; /* Ensure header doesn't clip children */
+        position: fixed; /* --- NEW/CHANGE: Make header fixed on mobile --- */
+        width: 100%;
     }
 
     h2 {
@@ -802,6 +805,8 @@ footer i {
     .hero-section {
         min-height: 65vh;
         padding: 80px 0;
+        /* --- NEW/CHANGE: Add top padding to hero to prevent content from going under fixed header --- */
+        padding-top: 100px; /* Adjust based on your header's actual height */
     }
     .hero-section h2 {
         font-size: 3em;
@@ -840,6 +845,7 @@ footer i {
         top: 80px; /* Adjust based on your header height */
         left: 0;
         width: 100%;
+        height: calc(100vh - 80px); /* --- NEW/CHANGE: Make menu take full height below header --- */
         background-color: var(--bg-dark-primary); /* Same as header or slightly different */
         flex-direction: column;
         align-items: center;
@@ -848,37 +854,43 @@ footer i {
         opacity: 0;
         visibility: hidden;
         transform: translateY(-20px);
-        pointer-events: none; /* Disable interaction when hidden */
-        /* --- CHANGE: Very High Z-index for mobile nav to prevent any overlay issues --- */
-        z-index: 9999;
-        transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out, z-index 0.3s linear;
+        /* --- NEW/CHANGE: Ensure pointer-events are disabled when hidden --- */
+        pointer-events: none;
+        /* --- NEW/CHANGE: Max z-index to be absolutely sure it's on top when active --- */
+        z-index: 99998;
+        transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out;
+        /* --- NEW/CHANGE: Added overflow-y to allow scrolling if menu items exceed screen height --- */
+        overflow-y: auto;
     }
 
     .nav-links.active { /* Class added by JS when menu is open */
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
-        pointer-events: auto; /* Enable interaction when visible */
-        /* --- CHANGE: Ensure Z-index remains very high when active --- */
-        z-index: 9999;
+        /* --- NEW/CHANGE: Explicitly enable pointer-events when active --- */
+        pointer-events: auto;
+        /* --- NEW/CHANGE: Keep high z-index when active --- */
+        z-index: 99998;
     }
 
     .nav-links li {
         margin: 10px 0; /* Adjust vertical spacing */
+        width: 100%; /* Make list items take full width for better touch targets */
+        text-align: center;
     }
 
     .nav-links li a {
         font-size: 1.1em;
-        padding: 8px 15px; /* Add padding for touch targets */
+        padding: 15px 0; /* Increased padding for touch targets */
+        display: block; /* Make the whole area clickable */
     }
 
     .menu-toggle {
         display: flex; /* Show hamburger on mobile */
-        /* --- CHANGE: Very High Z-index for menu toggle to ensure it's clickable --- */
-        z-index: 10000; /* Highest z-index to guarantee clickability */
+        /* --- NEW/CHANGE: Highest z-index for the toggle itself --- */
+        z-index: 99999;
     }
 
-    /* --- CHANGE: Increased section-padding for better spacing on mobile --- */
     .section-padding {
         padding: 100px 0; /* Increased to ensure enough space */
     }
