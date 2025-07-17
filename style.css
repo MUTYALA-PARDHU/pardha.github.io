@@ -255,7 +255,6 @@ header .container {
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    /* --- CHANGE: Centered the image --- */
     margin: 0 auto 40px auto; /* Centered horizontally, kept bottom margin */
     border: 6px solid var(--green-primary); /* Green border */
     box-shadow: 0 0 0 10px rgba(0,230,118,0.25), 0 0 25px rgba(0,230,118,0.4); /* Prominent green glow */
@@ -544,7 +543,6 @@ header .container {
     transform: translateX(-50%);
 }
 
-/* --- CHANGE: Enhanced Table Responsiveness for Teaching Role --- */
 .teaching-role table {
     width: 100%;
     border-collapse: collapse;
@@ -845,6 +843,9 @@ footer i {
         visibility: hidden;
         transform: translateY(-20px);
         pointer-events: none; /* Disable interaction when hidden */
+        /* --- CHANGE: Increased z-index to ensure it overlays content --- */
+        z-index: 999;
+        transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out, z-index 0s step-end; /* Added z-index to transition for immediate effect */
     }
 
     .nav-links.active { /* Class added by JS when menu is open */
@@ -852,6 +853,8 @@ footer i {
         visibility: visible;
         transform: translateY(0);
         pointer-events: auto; /* Enable interaction when visible */
+        z-index: 999; /* Ensure it stays above content when active */
+        transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out, z-index 0s step-start; /* Added z-index to transition */
     }
 
     .nav-links li {
@@ -867,8 +870,9 @@ footer i {
         display: flex; /* Show hamburger on mobile */
     }
 
+    /* --- CHANGE: Increased section-padding for better spacing on mobile --- */
     .section-padding {
-        padding: 60px 0;
+        padding: 80px 0; /* Increased from 60px */
     }
     .skills-interests-content {
         flex-direction: column;
@@ -905,7 +909,7 @@ footer i {
         font-size: 1.6em;
     }
 
-    /* --- CHANGE: Table to Stack for Mobile --- */
+    /* Table to Stack for Mobile */
     .teaching-role table,
     .teaching-role thead,
     .teaching-role tbody,
@@ -947,7 +951,7 @@ footer i {
         border-bottom: 0; /* No border for the last item in the stack */
     }
 
-    /* Generate labels from table headers using data attributes (or hardcode if simpler) */
+    /* Generate labels from table headers using data attributes */
     .teaching-role td::before {
         content: attr(data-label); /* Use data-label attribute to display header */
         position: absolute;
@@ -961,12 +965,6 @@ footer i {
         color: var(--green-accent); /* Make labels stand out */
         text-align: left;
     }
-
-    /* Explicitly define data-labels in HTML for this to work perfectly.
-       If not, you can hardcode them here, e.g.,
-       .teaching-role td:nth-of-type(1)::before { content: "COURSE CODE:"; }
-       .teaching-role td:nth-of-type(2)::before { content: "COURSE NAME:"; }
-    */
 
     /* Back to general styles */
     .conference-item {
